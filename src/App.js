@@ -1,21 +1,26 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import ArtBoard from './Components/ArtBoard';
+import project from './TestProject';
 
 class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
-  }
+	constructor(props) {
+		super(props)
+		this.state = {
+			project,
+			selectedShape: 'path'
+		}
+	}
+  	render() {
+	  	console.log(project);
+	    return (
+	      	<div className="App">
+		  		<ArtBoard
+					shapes={this.state.project.shapes}
+				/>
+	      	</div>
+	    );
+  	}
 }
 
 export default App;
