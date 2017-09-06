@@ -14,26 +14,26 @@ class ArtBoard extends React.Component {
 		this.state = {
 			lastClick: {x:0, y:0},
 		}
-		this.handleClick = this.handleClick.bind(this);
+		this.handleMouseDown = this.handleMouseDown.bind(this);
 		this.handleMouseUp = this.handleMouseUp.bind(this);
 		this.beginShapeDrag = this.beginShapeDrag.bind(this);
 	}
 
-	handleClick(event) {
-		if(this.props.shape) {
-			this.beginShapeDrag(event.clientX, event.clientY);
-		}
-		this.setState({
-			lastClick: { x: event.clientX, y: event.clientY }
-		});
+	handleMouseDown(event) {
+		// if(this.props.shape) {
+		// 	this.beginShapeDrag(event.clientX, event.clientY);
+		// }
+		// this.setState({
+		// 	lastClick: { x: event.clientX, y: event.clientY }
+		// });
 	}
 
 	handleMouseUp(event) {
-		if(utilities.getDifference(event.clientX, this.state.lastClick.x) > 0 || utilities.getDifference(event.clientY, this.state.lastClick.y) > 0) {
-			console.log("drag");
-		} else {
-			console.log('click');
-		}
+		// if(utilities.getDifference(event.clientX, this.state.lastClick.x) > 0 || utilities.getDifference(event.clientY, this.state.lastClick.y) > 0) {
+		// 	console.log("drag");
+		// } else {
+		// 	console.log('click');
+		// }
 	}
 
 	beginShapeDrag(x,y) {
@@ -81,7 +81,7 @@ class ArtBoard extends React.Component {
 		return (
 			<div>
 				<svg
-					onMouseDown={(event) => this.handleClick(event)}
+					onMouseDown={(event) => this.handleMouseDown(event)}
 					onMouseUp={(event) => this.handleMouseUp(event)}
 					className="ArtBoard">
 					{shapes}
