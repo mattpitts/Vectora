@@ -5,7 +5,6 @@ export default function shapeReducer(state = {shapes: [], new: false}, action) {
 		case 'CREATE_SHAPE':
 			return {shapes: state.shapes, new: action.shape}
 		case 'CHANGE_SHAPE':
-		console.log(action.shape);
 			return {shapes: state.shapes, new: action.shape}
 		case 'FINISH_SHAPE':
 			return {shapes: [...state.shapes, action.shape], new: false}
