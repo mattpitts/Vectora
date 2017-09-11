@@ -1,4 +1,4 @@
-const project = {
+const shapes = {
 	shapes: [
 		{
 			type: "circle",
@@ -38,8 +38,9 @@ const project = {
 			stroke: 'black',
 			strokeWidth: '9px'
 		}
-	]
+	],
+	new: false
 }
 
 
-export default project;
+export default shapes;
