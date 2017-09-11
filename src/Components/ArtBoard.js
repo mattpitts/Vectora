@@ -55,54 +55,18 @@ class ArtBoard extends React.Component {
 			} else {
 				let updatedShape = shapeUtilities[this.props.tool].update(event.clientX, event.clientY, this.props.newShape);
 				this.props.actions.changeShape(updatedShape);
+				this.forceUpdate();
 			}
 		}
 	}
 
 	render() {
-		console.log(this.props.newShape);
 		let newShape;
 		if(this.props.newShape) {
 			newShape = shapeUtilities.constructor(this.props.newShape,1);
 		}
-		console.log(newShape);
 		let shapes = this.props.shapes.map((shape, i) => {
 			return shapeUtilities.constructor(shape,i);
-			// switch(shape.type) {
-			// 	case 'circle':
-			// 		return (
-			// 			<Circle
-			// 				key={i}
-			// 				cx={shape.cx}
-			// 				cy={shape.cy}
-			// 				r={shape.r}
-			// 				fill={shape.fill}
-			// 			/>
-			// 		)
-			// 	case 'rect':
-			// 		return (
-			// 			<Rect
-			// 				key={i}
-			// 				x={shape.x}
-			// 				y={shape.y}
-			// 				rx={shape.rx}
-			// 				ry={shape.ry}
-			// 				width={shape.width}
-			// 				height={shape.height}
-			// 				fill={shape.fill}
-			// 			/>
-			// 		)
-			// 	case 'path':
-			// 		return (
-			// 			<Path
-			// 				key={i}
-			// 				d={shape.d}
-			// 				fill={shape.fill}
-			// 				stroke={shape.stroke}
-			// 				strokeWidth={shape.strokeWidth}
-			// 			/>
-			// 		)
-			// }
 		})
 		return (
 			<div>

@@ -4,8 +4,8 @@ const rect = {
 			type: 'rect',
 			x: x,
 			y: y,
-			width: '0',
-			height: '0',
+			width: 0,
+			height: 0,
 			rx: props.rx,
 			ry: props.ry,
 			fill: props.fill

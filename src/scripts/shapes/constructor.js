@@ -4,6 +4,7 @@ import Path from '../../Components/Shapes/Path';
 import Rect from '../../Components/Shapes/Rect';
 
 export default function createShapeComponent(shape, i) {
+		console.log('constructor');
 	switch(shape.type) {
 		case 'circle':
 			return (
