@@ -1,5 +1,3 @@
-import TestProject from '../TestProject';
-
 export default function shapeReducer(state = {shapes: [], new: false}, action) {
 	switch(action.type) {
 		case 'CREATE_SHAPE':

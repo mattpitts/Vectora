@@ -11,22 +11,6 @@ const rect = {
 			fill: props.fill
 		}
 	},
-	// update(x, y, rect) {
-	// 	let newRect = rect;
-	// 	if(x < rect.x) {
-	// 		newRect.width = rect.width + rect.x - x;
-	// 		newRect.x = x;
-	// 	} else if(x > rect.x){
-	// 		newRect.width = x - rect.x;
-	// 	}
-	// 	if(y < rect.y) {
-	// 		newRect.height = rect.height + rect.y - y;
-	// 		newRect.y = y;
-	// 	} else if(y > rect.y){
-	// 		newRect.height = y - rect.y;
-	// 	}
-	// 	return newRect;
-	// },
 	update(x, y, rect) {
 		//if crossover is happening or rect was just created
 		if(rect.width <= 0) {
@@ -106,13 +90,3 @@ const rect = {
 };
 
 export default rect;
-
-
-// if(y < rect.y) {
-// 	rect.draggedDown = true;
-// 	rect.height = rect.height + rect.y - y;
-// 	rect.y = y;
-// } else if(y > rect.y && !rect.draggedDown) {
-// 	rect.draggedUp = true;
-// 	rect.height = y - rect.y;
-// }

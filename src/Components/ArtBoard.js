@@ -7,10 +7,11 @@ import Circle from './Shapes/Circle';
 import Rect from './Shapes/Rect';
 import Path from './Shapes/Path';
 import * as shapeActions from '../actions/shapeActions';
+import * as dragActions from '../actions/dragActions';
 
 import utilities from '../scripts/utilities';
 import shapeUtilities from '../scripts/shapes';
-
+let area;
 const fillerProps = {
 	fill: 'red',
 	stroke: 'black',
@@ -57,6 +58,8 @@ class ArtBoard extends React.Component {
 				this.props.actions.changeShape(updatedShape);
 				this.forceUpdate();
 			}
+			area = utilities.getDragArea(event.clientX, event.clientY, area);
+			console.log(area);
 		}
 	}
 
