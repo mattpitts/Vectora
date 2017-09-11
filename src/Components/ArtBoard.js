@@ -44,22 +44,34 @@ class ArtBoard extends React.Component {
 			lastClick: null
 		});
 		if(this.props.newShape) {
-			this.props.actions.finishShape(this.props.newShape);
+			this.props.actions.shapeActions.finishShape(this.props.newShape);
+		}
+		if(this.props.drag.dragging) {
+			this.props.actions.dragActions.finishDrag(this.props.drag.area);
 		}
 	}
 
 	onMouseMove(event) {
 		if(this.state.mouseDown) {
-			if(!this.props.newShape) {
-				let newShape = shapeUtilities[this.props.tool].create(event.clientX, event.clientY, fillerProps);
-				this.props.actions.createShape(newShape)
+			if(!this.props.drag.dragging) {
+				this.props.actions.dragActions.beginDrag(
+					utilities.getDragArea(event.clientX, event.clientY)
+				);
 			} else {
-				let updatedShape = shapeUtilities[this.props.tool].update(event.clientX, event.clientY, this.props.newShape);
-				this.props.actions.changeShape(updatedShape);
+				this.props.actions.dragActions.updateDrag(
+					utilities.getDragArea(event.clientX, event.clientY, this.props.drag.area)
+				);
+				this.forceUpdate();
+				console.log(this.props.drag);
+			}
+			if(!this.props.newShape && this.props.tool !== 'select') {
+				let newShape = shapeUtilities[this.props.tool].create(this.props.drag.area, fillerProps);
+				this.props.actions.shapeActions.createShape(newShape)
+			} else {
+				let updatedShape = shapeUtilities[this.props.tool].update(this.props.drag.area, this.props.newShape);
+				this.props.actions.shapeActions.changeShape(updatedShape);
 				this.forceUpdate();
 			}
-			area = utilities.getDragArea(event.clientX, event.clientY, area);
-			console.log(area);
 		}
 	}
 
@@ -91,13 +103,17 @@ function mapStateToProps(state, ownProps) {
 	return {
 		shapes: state.shapes.shapes,
 		newShape: state.shapes.new,
-		tool: state.toolbar
+		tool: state.toolbar,
+		drag: state.drag
 	};
 };
 
 function mapDispatchToProps(dispatch) {
 	return {
-		actions: bindActionCreators(shapeActions, dispatch)
+		actions: {
+			shapeActions: bindActionCreators(shapeActions, dispatch),
+			dragActions: bindActionCreators(dragActions, dispatch)
+		}
 	}
 }
 
