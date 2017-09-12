@@ -10,6 +10,10 @@ const Rect = (props) => {
 			width={props.width}
 			height={props.height}
 			fill={props.fill}
+			stroke={props.stroke}
+			strokeWidth={props.strokeWidth}
+			strokeDasharray={props.strokeDasharray}
+			fillOpacity={props.fillOpacity}
 		/>
 	)
 }

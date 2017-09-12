@@ -64,7 +64,6 @@ const utilities = {
 				area.yMin = y;
 			}
 		}
-		console.log(window.innerWidth);
 		return area;
 	}
 }

@@ -8,7 +8,9 @@ const rect = {
 			height: 0,
 			rx: props.rx,
 			ry: props.ry,
-			fill: props.fill
+			fill: props.fill,
+			selected: true,
+			boundingBox: area
 		}
 	},
 	update(area, rect) {
@@ -16,6 +18,7 @@ const rect = {
 		rect.y = area.yMin;
 		rect.width = area.xMax - area.xMin;
 		rect.height = area.yMax - area.yMin;
+		rect.boundingBox = area;
 		return rect;
 	},
 	// update(x, y, rect) {

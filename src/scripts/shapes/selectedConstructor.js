@@ -1,8 +1,18 @@
+import React from 'react';
 import constructor from './constructor';
-import getShapeBounds from '../utilities';
+import BoundingBox from '../../Components/Shapes/BoundingBox';
 
 export default function selectedConstructor(shape, i) {
-	let shapeBounds = getShapeBounds(shape);
 	let constructedShape = constructor(shape, i);
-	return shape;
+	return (
+		<g key={i}>
+			<BoundingBox
+				xMin={shape.boundingBox.xMin}
+				xMax={shape.boundingBox.xMax}
+				yMin={shape.boundingBox.yMin}
+				yMax={shape.boundingBox.yMax}
+			/>
+			{constructedShape}
+		</g>
+	)
 }

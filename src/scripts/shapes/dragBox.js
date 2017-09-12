@@ -11,7 +11,7 @@ export default function dragBox(area) {
 			height={area.yMax - area.yMin}
 			fill={"rgba(100,100,100,0.5)"}
 			stroke={'blue'}
-			strokeWidth={10}
+			strokeWidth={1}
 		/>
 	)
 }

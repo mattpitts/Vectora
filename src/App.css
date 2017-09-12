@@ -59,3 +59,33 @@ body {
 .dragBox {
 	fill: rgba(150,150,150,0.1);
 }
+.mb {
+	fill: rgba(0,0,200, 0.7);
+}
+.mb:active {
+	fill: yellow;
+}
+.tl {
+	cursor: nwse-resize;
+}
+.br {
+	cursor: nwse-resize;
+}
+.tr {
+	cursor: nesw-resize;
+}
+.bl {
+	cursor: nesw-resize;
+}
+.tm {
+	cursor: ns-resize;
+}
+.bm {
+	cursor: ns-resize;
+}
+.lm {
+	cursor: ew-resize;
+}
+.rm {
+	cursor: ew-resize;
+}

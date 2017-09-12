@@ -15,11 +15,11 @@ let area;
 const fillerProps = {
 	fill: 'red',
 	stroke: 'black',
-	strokeWidth: '9px'
+	strokeWidth: 9
 };
 const pathFillerProps = {
 	stroke: 'black',
-	strokeWidth: '9px',
+	strokeWidth: 6,
 	fill: 'none'
 }
 
@@ -32,13 +32,19 @@ class ArtBoard extends React.Component {
 		this.onMouseDown = this.onMouseDown.bind(this);
 		this.onMouseUp = this.onMouseUp.bind(this);
 		this.onMouseMove = this.onMouseMove.bind(this);
+		this.onClick = this.onClick.bind(this);
 
+	}
+
+	onClick(event) {
+		console.log(event.target);
 	}
 
 	onMouseDown(event) {
 		this.setState({
 			mouseDown: true
 		})
+		console.log(event.target);
 	}
 
 	onMouseUp(event) {
@@ -73,8 +79,7 @@ class ArtBoard extends React.Component {
 					)
 				} else {
 					let newShape = shapeUtilities[this.props.tool].create(this.props.drag.area, fillerProps);
-					this.props.actions.shapeActions.createShape(newShape)
-
+					this.props.actions.shapeActions.createShape(newShape);
 				}
 			} else if(this.props.tool === 'path') {
 				this.props.actions.shapeActions.changeShape(
@@ -110,6 +115,7 @@ class ArtBoard extends React.Component {
 					onMouseDown={(event) => this.onMouseDown(event)}
 					onMouseUp={(event) => this.onMouseUp(event)}
 					onMouseMove={(event) => this.onMouseMove(event)}
+					onClick={(event) => this.onClick(event)}
 					className="ArtBoard">
 					{shapes}
 					{newShape}
