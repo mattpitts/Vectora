@@ -4,7 +4,6 @@ import * as toolbarActions from '../actions/toolbarActions';
 
 class ToolBar extends React.Component {
 	render() {
-		console.log(this.props);
 		return(
 			<div className="toolbar-container">
 				<ul>

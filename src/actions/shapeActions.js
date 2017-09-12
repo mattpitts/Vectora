@@ -7,3 +7,9 @@ export function changeShape(shape) {
 export function finishShape(shape) {
 	return { type: 'FINISH_SHAPE', shape }
 }
+export function selectShape(id) {
+	return { type: 'SELECT_SHAPE', id }
+}
+export function unselectShapes() {
+	return { type: 'UNSELECT_SHAPES' }
+}

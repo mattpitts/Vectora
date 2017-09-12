@@ -33,18 +33,28 @@ class ArtBoard extends React.Component {
 		this.onMouseUp = this.onMouseUp.bind(this);
 		this.onMouseMove = this.onMouseMove.bind(this);
 		this.onClick = this.onClick.bind(this);
+		this.onShapeSelect = this.onShapeSelect.bind(this);
+	}
 
+	onShapeSelect(id) {
+		console.log(id);
 	}
 
 	onClick(event) {
-		console.log(event.target);
+		if(event.target.id === "ArtBoard") {
+			this.props.actions.shapeActions.unselectShapes();
+		} else {
+			this.props.actions.shapeActions.unselectShapes();
+			this.props.actions.shapeActions.selectShape(event.target.id);
+			// this.forceUpdate();
+		}
 	}
 
 	onMouseDown(event) {
 		this.setState({
 			mouseDown: true
 		})
-		console.log(event.target);
+		// console.log(event.target);
 	}
 
 	onMouseUp(event) {
@@ -67,6 +77,10 @@ class ArtBoard extends React.Component {
 					utilities.getDragArea(event.clientX, event.clientY)
 				);
 			} else {
+				if(this.props.selected) {
+					this.props.actions.shapeActions.unselectShapes();
+					this.forceUpdate();
+				}
 				this.props.actions.dragActions.updateDrag(
 					utilities.getDragArea(event.clientX, event.clientY, this.props.drag.area)
 				);
@@ -104,14 +118,17 @@ class ArtBoard extends React.Component {
 		}
 		let shapes = this.props.shapes.map((shape, i) => {
 			if(!shape.selected) {
-				return shapeUtilities.constructor(shape,i);
+				return shapeUtilities.constructor(shape, i, this.onShapeSelect);
 			} else {
-				return shapeUtilities.selectedConstructor(shape,i);
+				return shapeUtilities.selectedConstructor(shape, i, this.onShapeSelect);
 			}
 		})
+		// console.log(this.props.shapes);
+		// console.log(shapes);
 		return (
 			<div>
 				<svg
+					id={'ArtBoard'}
 					onMouseDown={(event) => this.onMouseDown(event)}
 					onMouseUp={(event) => this.onMouseUp(event)}
 					onMouseMove={(event) => this.onMouseMove(event)}
@@ -131,6 +148,7 @@ function mapStateToProps(state, ownProps) {
 	return {
 		shapes: state.shapes.shapes,
 		newShape: state.shapes.new,
+		selected: state.shapes.selected,
 		tool: state.toolbar,
 		drag: state.drag
 	};

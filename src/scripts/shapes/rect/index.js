@@ -18,7 +18,12 @@ const rect = {
 		rect.y = area.yMin;
 		rect.width = area.xMax - area.xMin;
 		rect.height = area.yMax - area.yMin;
-		rect.boundingBox = area;
+		rect.boundingBox = {
+			xMin: area.xMin,
+			xMax: area.xMax,
+			yMin: area.yMin,
+			yMax: area.yMax
+		};
 		return rect;
 	},
 	// update(x, y, rect) {

@@ -3,6 +3,7 @@ import React from 'react';
 const Rect = (props) => {
 	return (
 		<rect
+			id={props.id}
 			x={props.x}
 			y={props.y}
 			rx={props.rx}
