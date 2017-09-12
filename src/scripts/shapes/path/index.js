@@ -1,5 +1,6 @@
 const path = {
 	create(x, y, props) {
+		x -= window.innerWidth * 0.1;
 		return {
 			type: 'path',
 			d: `M ${x} ${y}`,
@@ -9,6 +10,7 @@ const path = {
 		}
 	},
 	update(x, y, path) {
+		x -= window.innerWidth * 0.1;
 		let newD = `${path.d} L ${x} ${y}`;
 		return {...path, d: newD}
 	},

@@ -17,6 +17,11 @@ const fillerProps = {
 	stroke: 'black',
 	strokeWidth: '9px'
 };
+const pathFillerProps = {
+	stroke: 'black',
+	strokeWidth: '9px',
+	fill: 'none'
+}
 
 class ArtBoard extends React.Component {
 	constructor(props) {
@@ -62,11 +67,21 @@ class ArtBoard extends React.Component {
 					utilities.getDragArea(event.clientX, event.clientY, this.props.drag.area)
 				);
 				this.forceUpdate();
-				console.log(this.props.drag);
 			}
-			if(!this.props.newShape && this.props.tool !== 'select') {
-				let newShape = shapeUtilities[this.props.tool].create(this.props.drag.area, fillerProps);
-				this.props.actions.shapeActions.createShape(newShape)
+			if(!this.props.newShape) {
+				if(this.props.tool === 'path') {
+					this.props.actions.shapeActions.createShape(
+						shapeUtilities['path'].create(event.clientX, event.clientY, pathFillerProps)
+					)
+				} else {
+					let newShape = shapeUtilities[this.props.tool].create(this.props.drag.area, fillerProps);
+					this.props.actions.shapeActions.createShape(newShape)
+
+				}
+			} else if(this.props.tool === 'path') {
+				this.props.actions.shapeActions.changeShape(
+					shapeUtilities[this.props.tool].update(event.clientX, event.clientY, this.props.newShape)
+				)
 			} else {
 				let updatedShape = shapeUtilities[this.props.tool].update(this.props.drag.area, this.props.newShape);
 				this.props.actions.shapeActions.changeShape(updatedShape);
@@ -77,11 +92,19 @@ class ArtBoard extends React.Component {
 
 	render() {
 		let newShape;
+		let dragBox;
+		if(this.props.drag.dragging && this.props.tool !== 'path') {
+			dragBox = shapeUtilities.dragBox(this.props.drag.area);
+		}
 		if(this.props.newShape) {
 			newShape = shapeUtilities.constructor(this.props.newShape,1);
 		}
 		let shapes = this.props.shapes.map((shape, i) => {
-			return shapeUtilities.constructor(shape,i);
+			if(!shape.selected) {
+				return shapeUtilities.constructor(shape,i);
+			} else {
+				return shapeUtilities.selectedConstructor(shape,i);
+			}
 		})
 		return (
 			<div>
@@ -92,6 +115,7 @@ class ArtBoard extends React.Component {
 					className="ArtBoard">
 					{shapes}
 					{newShape}
+					{dragBox}
 				</svg>
 			</div>
 
