@@ -4,6 +4,7 @@ import Rect from '../../Components/Shapes/Rect';
 export default function dragBox(area) {
 	return (
 		<Rect
+			className={'dragBox'}
 			x={area.xMin}
 			y={area.yMin}
 			width={area.xMax - area.xMin}

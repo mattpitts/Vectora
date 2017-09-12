@@ -27,7 +27,6 @@ class ArtBoard extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			lastClick: null,
 			mouseDown: false
 		}
 		this.onMouseDown = this.onMouseDown.bind(this);
@@ -38,8 +37,7 @@ class ArtBoard extends React.Component {
 
 	onMouseDown(event) {
 		this.setState({
-			mouseDown: true,
-			lastClick: {x: event.clientX, y: event.clientY }
+			mouseDown: true
 		})
 	}
 
