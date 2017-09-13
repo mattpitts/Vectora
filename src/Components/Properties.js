@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux';
 import * as shapeActions from '../actions/shapeActions';
 import * as propertiesActions from '../actions/propertiesActions';
 import Fill from './PropertiesComponents/Fill';
+import Stroke from './PropertiesComponents/Stroke';
 import shapeUtilities from '../scripts/shapes';
 
 class Properties extends React.Component {
@@ -27,13 +28,17 @@ class Properties extends React.Component {
 	}
 	render() {
 		let selectedShape = shapeUtilities.getSelectedShape(this.props.shapes.shapes);
-		let fill = selectedShape ? selectedShape.fill : this.props.properties.fill;
+		console.log(selectedShape);
 		return (
 			<div>
-				<Fill
+				{selectedShape && <Fill
 					onPropertyChange={this.onPropertyChange}
-					fill={fill}
-				/>
+					fill={selectedShape.fill}
+				/>}
+				{selectedShape && <Stroke
+					onPropertyChange={this.onPropertyChange}
+					stroke={selectedShape.stroke}
+				/>}
 			</div>
 		)
 	}

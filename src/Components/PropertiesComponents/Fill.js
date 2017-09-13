@@ -15,6 +15,7 @@ class Fill extends React.Component {
 		return (
 			<div>
 				<SketchPicker
+					key={1}
 					color={this.props.fill}
 					onChange={this.updateFillProperty}
 					width={'12vw'}

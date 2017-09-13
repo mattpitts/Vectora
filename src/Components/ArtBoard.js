@@ -11,17 +11,6 @@ import * as dragActions from '../actions/dragActions';
 
 import utilities from '../scripts/utilities';
 import shapeUtilities from '../scripts/shapes';
-let area;
-const fillerProps = {
-	fill: 'red',
-	stroke: 'black',
-	strokeWidth: 9
-};
-const pathFillerProps = {
-	stroke: 'black',
-	strokeWidth: 6,
-	fill: 'none'
-}
 
 class ArtBoard extends React.Component {
 	constructor(props) {
@@ -117,9 +106,7 @@ class ArtBoard extends React.Component {
 			} else {
 				selectedShape = shapeUtilities.selectedConstructor(shape, i);
 			}
-		})
-		// console.log(this.props.shapes);
-		// console.log(shapes);
+		});
 		return (
 			<div>
 				<svg

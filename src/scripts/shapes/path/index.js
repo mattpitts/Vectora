@@ -3,8 +3,9 @@ const path = {
 		x -= window.innerWidth * 0.08;
 		return {
 			type: 'path',
+			selected: true,
 			d: `M ${x} ${y}`,
-			fill: props.fill,
+			fill: 'none',
 			stroke: props.stroke,
 			strokeWidth: props.strokeWidth,
 			boundingBox: {
@@ -16,9 +17,7 @@ const path = {
 		}
 	},
 	update(x, y, path) {
-		console.log(x);
 		x -= window.innerWidth * 0.08;
-		console.log(x);
 		if(x < path.boundingBox.xMin) {
 			path.boundingBox.xMin = x;
 		}
