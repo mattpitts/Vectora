@@ -104,6 +104,7 @@ class ArtBoard extends React.Component {
 	render() {
 		let newShape;
 		let dragBox;
+		let selectedShape;
 		if(this.props.drag.dragging && this.props.tool !== 'path') {
 			dragBox = shapeUtilities.dragBox(this.props.drag.area);
 		}
@@ -114,7 +115,7 @@ class ArtBoard extends React.Component {
 			if(!shape.selected) {
 				return shapeUtilities.constructor(shape, i);
 			} else {
-				return shapeUtilities.selectedConstructor(shape, i);
+				selectedShape = shapeUtilities.selectedConstructor(shape, i);
 			}
 		})
 		// console.log(this.props.shapes);
@@ -130,6 +131,7 @@ class ArtBoard extends React.Component {
 					className="ArtBoard">
 					{shapes}
 					{newShape}
+					{selectedShape}
 					{dragBox}
 				</svg>
 			</div>

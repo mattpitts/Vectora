@@ -1,7 +1,7 @@
 import React from 'react';
 import { SketchPicker } from 'react-color';
 
-class FillColor extends React.Component {
+class Fill extends React.Component {
 	constructor(props) {
 		super(props);
 		this.updateFillProperty = this.updateFillProperty.bind(this);
@@ -23,4 +23,4 @@ class FillColor extends React.Component {
 		)
 	}
 }
-export default FillColor;
+export default Fill;

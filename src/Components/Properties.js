@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as shapeActions from '../actions/shapeActions';
 import * as propertiesActions from '../actions/propertiesActions';
-import FillColor from './PropertiesComponents/FillColor';
+import Fill from './PropertiesComponents/Fill';
 import shapeUtilities from '../scripts/shapes';
 
 class Properties extends React.Component {
@@ -30,7 +30,7 @@ class Properties extends React.Component {
 		let fill = selectedShape ? selectedShape.fill : this.props.properties.fill;
 		return (
 			<div>
-				<FillColor
+				<Fill
 					onPropertyChange={this.onPropertyChange}
 					fill={fill}
 				/>
