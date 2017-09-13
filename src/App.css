@@ -13,21 +13,49 @@ body {
 	align-self: center;
 	box-shadow: 2px 2px 10px #333333;
 	padding: 0;
-	margin: 0 0 0 10vw;
+	margin: 0 0 0 8vw;
 }
 
 .Layout {
 	display: flex;
 	flex-direction: row;
 }
-
+.RightPanel {
+	background-color: #d6d6d6;
+	box-shadow: -1px 0px 2px #b2b2b2;
+	width: 12vw;
+	height:99.5vh;
+	position: fixed;
+	margin-left: 88vw;
+}
+.ShapeList {
+	padding: 15%;
+}
+.ShapeList p {
+	padding: 0;
+	cursor: pointer;
+	draggable: true;
+}
+.ShapeList p:hover {
+	color: red;
+}
+.ShapeList p:active {
+	color: white;
+}
+.ShapeListSelected {
+	color: yellow;
+}
+/*.ShapeListSelected {
+	color: white;
+	font-size: 1.1em;
+}*/
 .toolbar-container {
 	height: 99.5vh;
-	width: 10vw;
+	width: 8vw;
 	padding: 0;
 	position: fixed;
-	background-color: rgba(150,150,150,1);
-	box-shadow: 1px 0px 2px #333333;
+	background-color: #d6d6d6;
+	box-shadow: 1px 0px 2px #b2b2b2;
 }
 
 .toolbar-container ul {

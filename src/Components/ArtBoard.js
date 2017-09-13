@@ -108,6 +108,7 @@ class ArtBoard extends React.Component {
 	}
 
 	render() {
+		console.log(this.props);
 		let newShape;
 		let dragBox;
 		if(this.props.drag.dragging && this.props.tool !== 'path') {
@@ -150,7 +151,8 @@ function mapStateToProps(state, ownProps) {
 		newShape: state.shapes.new,
 		selected: state.shapes.selected,
 		tool: state.toolbar,
-		drag: state.drag
+		drag: state.drag,
+		properties: state.properties
 	};
 };
 

@@ -1,6 +1,6 @@
 const utilities = {
 	getDragArea(x, y, area) {
-		x -= window.innerWidth * 0.1;
+		x -= window.innerWidth * 0.08;
 		if(!area) {
 			area = {
 				xMin: x,
