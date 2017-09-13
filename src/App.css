@@ -50,6 +50,12 @@ body {
 .ShapeListSelected {
 	color: blue;
 }
+.SketchPickerContainer {
+	display: flex;
+	flex-direction: row;
+	align-items: flex-end;
+	justify-content: center;
+}
 /*.ShapeListSelected {
 	color: white;
 	font-size: 1.1em;

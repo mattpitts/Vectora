@@ -2,12 +2,8 @@ import React from 'react';
 import Circle from '../../Components/Shapes/Circle';
 import Path from '../../Components/Shapes/Path';
 import Rect from '../../Components/Shapes/Rect';
-import ArtBoard from '../../Components/ArtBoard'
 
-export default function constructor(shape, i, onShapeSelect) {
-	// console.log('constructor');
-	// console.log(onShapeSelect);
-	// console.log(ArtBoard);
+export default function constructor(shape, i) {
 	switch(shape.type) {
 		case 'circle':
 			return (
@@ -18,7 +14,6 @@ export default function constructor(shape, i, onShapeSelect) {
 					cy={shape.cy}
 					r={shape.r}
 					fill={shape.fill}
-					onClick={()=>onShapeSelect('asdasd')}
 				/>
 			)
 		case 'rect':
@@ -33,7 +28,6 @@ export default function constructor(shape, i, onShapeSelect) {
 					width={shape.width}
 					height={shape.height}
 					fill={shape.fill}
-					onClick={()=>onShapeSelect('asdasd')}
 				/>
 			)
 		case 'path':

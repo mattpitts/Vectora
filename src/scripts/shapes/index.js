@@ -4,6 +4,7 @@ import circle from './circle';
 import constructor from './constructor';
 import selectedConstructor from './selectedConstructor';
 import dragBox from './dragBox';
+import getSelectedShape from './getSelectedShape';
 
 const shapeUtilities = {
 	path,
@@ -11,7 +12,8 @@ const shapeUtilities = {
 	circle,
 	constructor,
 	selectedConstructor,
-	dragBox
+	dragBox,
+	getSelectedShape
 }
 
 export default shapeUtilities;

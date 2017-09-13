@@ -33,11 +33,6 @@ class ArtBoard extends React.Component {
 		this.onMouseUp = this.onMouseUp.bind(this);
 		this.onMouseMove = this.onMouseMove.bind(this);
 		this.onClick = this.onClick.bind(this);
-		this.onShapeSelect = this.onShapeSelect.bind(this);
-	}
-
-	onShapeSelect(id) {
-		console.log(id);
 	}
 
 	onClick(event) {
@@ -46,7 +41,6 @@ class ArtBoard extends React.Component {
 		} else {
 			this.props.actions.shapeActions.unselectShapes();
 			this.props.actions.shapeActions.selectShape(event.target.id);
-			// this.forceUpdate();
 		}
 	}
 
@@ -118,9 +112,9 @@ class ArtBoard extends React.Component {
 		}
 		let shapes = this.props.shapes.map((shape, i) => {
 			if(!shape.selected) {
-				return shapeUtilities.constructor(shape, i, this.onShapeSelect);
+				return shapeUtilities.constructor(shape, i);
 			} else {
-				return shapeUtilities.selectedConstructor(shape, i, this.onShapeSelect);
+				return shapeUtilities.selectedConstructor(shape, i);
 			}
 		})
 		// console.log(this.props.shapes);

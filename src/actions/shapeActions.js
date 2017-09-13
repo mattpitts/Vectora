@@ -13,3 +13,18 @@ export function selectShape(id) {
 export function unselectShapes() {
 	return { type: 'UNSELECT_SHAPES' }
 }
+// export function changeShapeFill(payload) {
+// 	return { type: 'CHANGE_SHAPE_FILL', payload }
+// }
+// export function changeShapeStroke(payload) {
+// 	return { type: 'CHANGE_SHAPE_STROKE', payload }
+// }
+// export function changeShapeStrokeColor(payload) {
+// 	return { type: 'CHANGE_SHAPE_STROKE_COLOR', payload }
+// }
+// export function changeShapeStrokeWidth(payload) {
+// 	return { type: 'CHANGE_SHAPE_STROKE_WIDTH', payload }
+// }
+export function changeShapeProperty(payload) {
+	return { type: 'CHANGE_SHAPE_PROPERTY', payload }
+}
