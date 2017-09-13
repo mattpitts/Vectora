@@ -7,6 +7,7 @@ const FillColor = (props) => {
 			<p>Fills</p>
 			<SketchPicker
 				width={'12vw'}
+				onChange={props.selectFillColor}
 			/>
 		</div>
 	)

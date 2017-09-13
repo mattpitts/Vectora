@@ -6,6 +6,7 @@ const initialProperties = {
 export default function propertiesReducer(state = initialProperties, action) {
 	switch(action.type) {
 		case 'SELECT_FILL_COLOR':
+		console.log(action);
 			return {...state, fill: action.fill }
 		case 'SELECT_STROKE_COLOR':
 			return {...state, stroke: action.stroke }

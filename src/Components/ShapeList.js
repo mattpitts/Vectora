@@ -6,10 +6,10 @@ import * as shapeActions from '../actions/shapeActions';
 
 class ShapeList extends React.Component {
 	render() {
-		console.log(this.props.shapes.shapes);
 		let shapes = this.props.shapes.shapes.map((shape, i) => {
 			if(shape.selected) {
 				return <p
+						key={i}
 						className={'ShapeListSelected'}
 						id={i}
 						onClick={() => this.props.actions.selectShape(i)}
@@ -17,9 +17,11 @@ class ShapeList extends React.Component {
 						{shape.type}
 					</p>
 			} else {
-				return <p id={i}
+				return <p
+						key={i}
+						id={i}
 						onClick={() => this.props.actions.selectShape(i)}>{shape.type}
-							</p>
+						</p>
 			}
 		});
 		return (

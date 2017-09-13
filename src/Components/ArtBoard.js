@@ -89,10 +89,10 @@ class ArtBoard extends React.Component {
 			if(!this.props.newShape) {
 				if(this.props.tool === 'path') {
 					this.props.actions.shapeActions.createShape(
-						shapeUtilities['path'].create(event.clientX, event.clientY, pathFillerProps)
+							shapeUtilities['path'].create(event.clientX, event.clientY, this.props.properties)
 					)
 				} else {
-					let newShape = shapeUtilities[this.props.tool].create(this.props.drag.area, fillerProps);
+					let newShape = shapeUtilities[this.props.tool].create(this.props.drag.area, this.props.properties);
 					this.props.actions.shapeActions.createShape(newShape);
 				}
 			} else if(this.props.tool === 'path') {
@@ -108,7 +108,6 @@ class ArtBoard extends React.Component {
 	}
 
 	render() {
-		console.log(this.props);
 		let newShape;
 		let dragBox;
 		if(this.props.drag.dragging && this.props.tool !== 'path') {

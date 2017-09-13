@@ -23,16 +23,21 @@ body {
 .RightPanel {
 	background-color: #d6d6d6;
 	box-shadow: -1px 0px 2px #b2b2b2;
-	width: 12vw;
+	width: 14vw;
 	height:99.5vh;
 	position: fixed;
-	margin-left: 88vw;
+	margin-left: 86vw;
 }
 .ShapeList {
 	padding: 15%;
+	height: 8vh;
+	max-height: 8vh;
+	overflow-y: scroll;
+	background-color: #999999;
 }
 .ShapeList p {
 	padding: 0;
+	margin: 0;
 	cursor: pointer;
 	draggable: true;
 }
@@ -43,7 +48,7 @@ body {
 	color: white;
 }
 .ShapeListSelected {
-	color: yellow;
+	color: blue;
 }
 /*.ShapeListSelected {
 	color: white;
