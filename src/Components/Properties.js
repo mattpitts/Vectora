@@ -29,7 +29,7 @@ class Properties extends React.Component {
 	render() {
 		let selectedShape = shapeUtilities.getSelectedShape(this.props.shapes.shapes);
 		return (
-			<div>
+			<div className={'PropertiesContainer'}>
 				{selectedShape && <Fill
 					onPropertyChange={this.onPropertyChange}
 					fill={selectedShape.fill}

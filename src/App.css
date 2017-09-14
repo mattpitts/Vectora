@@ -29,11 +29,11 @@ body {
 	margin-left: 86vw;
 }
 .ShapeList {
-	padding: 15%;
+	padding: 5px 0 5px 15%;
 	height: 8vh;
 	max-height: 8vh;
 	overflow-y: scroll;
-	background-color: #999999;
+	background-color: #ffffff;
 }
 .ShapeList p {
 	padding: 0;
@@ -56,10 +56,23 @@ body {
 	align-items: flex-end;
 	justify-content: center;
 }
-/*.ShapeListSelected {
-	color: white;
-	font-size: 1.1em;
-}*/
+.PropertiesContainer {
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+.PropertyHeader {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	margin: 2px 0 2px 0;
+	padding: 5px;
+	box-shadow: 1px 1px 2px #222222;
+}
+.PropertyHeader h4 {
+	margin: 0;
+	padding: 0;
+}
+
 .toolbar-container {
 	height: 99.5vh;
 	width: 8vw;

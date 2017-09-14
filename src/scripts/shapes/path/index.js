@@ -6,8 +6,8 @@ const path = {
 			selected: true,
 			d: `M ${x} ${y}`,
 			fill: 'none',
-			stroke: props.stroke,
-			strokeWidth: props.strokeWidth,
+			stroke: 'grey',
+			strokeWidth: 8,
 			boundingBox: {
 				xMin: x,
 				xMax: x,
