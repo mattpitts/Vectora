@@ -13,6 +13,9 @@ export function selectShape(id) {
 export function unselectShapes() {
 	return { type: 'UNSELECT_SHAPES' }
 }
+export function deleteSelectedShape() {
+	return { type: 'DELETE_SELECTED_SHAPE' }
+}
 // export function changeShapeFill(payload) {
 // 	return { type: 'CHANGE_SHAPE_FILL', payload }
 // }

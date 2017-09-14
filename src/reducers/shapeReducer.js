@@ -32,48 +32,21 @@ export default function shapeReducer(state = {shapes: [], new: false, selected: 
 				}
 			})
 			return {...state, shapes: unselectedShapes, selected: false}
-		// case 'CHANGE_SHAPE_FILL':
-		// 	newShapes = state.shapes.map((shape, i) => {
-		// 		if(i === action.payload.id) {
-		// 			shape.fill = action.payload.fill;
-		// 			return shape;
-		// 		} else {
-		// 			return shape;
-		// 		}
-		// 	});
-		// 	return {...state, shapes: newShapes}
-		// case 'CHANGE_SHAPE_STROKE':
-		// 	newShapes = state.shapes.map((shape, i) => {
-		// 		if(i === action.payload.id) {
-		// 			shape.stroke = action.payload.stroke;
-		// 			return shape;
-		// 		} else {
-		// 			return shape;
-		// 		}
-		// 	});
-		// 	return {...state, shapes: newShapes}
-		// case 'CHANGE_SHAPE_STROKE_COLOR':
-		// 	newShapes = state.shapes.map((shape, i) => {
-		// 		if(i === action.payload.id) {
-		// 			shape.stroke = action.payload.stroke;
-		// 			return shape;
-		// 		} else {
-		// 			return shape;
-		// 		}
-		// 	});
-		// 	return {...state, shapes: newShapes}
-		// case 'CHANGE_SHAPE_STROKE_WIDTH':
-		// 	newShapes = state.shapes.map((shape, i) => {
-		// 		if(i == action.payload.id) {
-		// 			shape.strokeWidth = action.payload.strokeWidth;
-		// 			return shape;
-		// 		} else {
-		// 			return shape;
-		// 		}
-		// 	});
-		// 	return {...state, shapes: newShapes}
+		case 'DELETE_SELECTED_SHAPE':
+			let selectedIndex
+			for (let i = 0; i < state.shapes.length; i++) {
+				if(state.shapes[i].selected) {
+					selectedIndex = i;
+				}
+			}
+			let before = state.shapes.slice(0, selectedIndex)
+			let after = state.shapes.slice(selectedIndex + 1, state.shapes.length)
+			let shapes = [...before, ...after];
+			console.log(shapes);
+			return {...state, shapes: [...before, ...after]}
+			// console.log(state);
+			// return state;
 		case 'CHANGE_SHAPE_PROPERTY':
-		console.log(action);
 			newShapes = state.shapes.map((shape, i) => {
 				if(i == action.payload.id) {
 					shape[action.payload.property] = action.payload.value;

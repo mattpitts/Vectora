@@ -6,6 +6,7 @@ import { bindActionCreators } from 'redux';
 import Circle from './Shapes/Circle';
 import Rect from './Shapes/Rect';
 import Path from './Shapes/Path';
+import KeyboardControls from './KeyboardControls';
 import * as shapeActions from '../actions/shapeActions';
 import * as dragActions from '../actions/dragActions';
 
@@ -23,6 +24,8 @@ class ArtBoard extends React.Component {
 		this.onMouseMove = this.onMouseMove.bind(this);
 		this.onClick = this.onClick.bind(this);
 	}
+
+
 
 	onClick(event) {
 		if(event.target.id === "ArtBoard") {
@@ -109,6 +112,7 @@ class ArtBoard extends React.Component {
 		});
 		return (
 			<div>
+				<KeyboardControls actions={this.props.actions}/>
 				<svg
 					id={'ArtBoard'}
 					onMouseDown={(event) => this.onMouseDown(event)}
