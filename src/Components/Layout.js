@@ -1,13 +1,15 @@
 import React from 'react';
 
-import ToolBar from './ToolBar';
+import LeftPanel from './LeftPanel';
+
 import ArtBoard from './ArtBoard';
 import RightPanel from './RightPanel'
+
 
 const Layout = () => {
 	return (
 		<div className="Layout">
-			<ToolBar/>
+			<LeftPanel/>
 			<ArtBoard/>
 			<RightPanel/>
 		</div>

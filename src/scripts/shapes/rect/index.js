@@ -8,8 +8,10 @@ const rect = {
 			height: 0,
 			rx: props.rx,
 			ry: props.ry,
-			fill: props.fill,
+			fill: 'grey',
 			selected: true,
+			stroke: 'none',
+			strokeWidth: '8px',
 			boundingBox: area
 		}
 	},

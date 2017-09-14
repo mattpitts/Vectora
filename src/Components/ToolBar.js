@@ -6,6 +6,9 @@ class ToolBar extends React.Component {
 	render() {
 		return(
 			<div className="toolbar-container">
+				<div className='PropertyHeader'>
+					<h4>Tools</h4>
+				</div>
 				<ul>
 					<li>
 						<p onClick={() => this.props.selectTool('select')}>Select</p>

@@ -33,7 +33,7 @@ class Stroke extends React.Component {
 					key={1}
 					color={this.props.stroke}
 					onChange={this.updateStrokeColor}
-					width={'12vw'}
+					width={'12.5vw'}
 				/>}
 			</div>
 		)

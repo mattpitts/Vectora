@@ -14,9 +14,9 @@ const circle = {
 			cx: area.xMin + ((area.xMax - area.xMin) / 2),
 			cy: area.yMin + ((area.yMax - area.yMin) / 2),
 			r: r,
-			stroke: props.stroke,
-			strokeWidth: props.strokeWidth,
-			fill: props.fill,
+			stroke: 'none',
+			strokeWidth: '8px',
+			fill: 'grey',
 			boundingBox: boundingBox,
 			selected: true
 		}

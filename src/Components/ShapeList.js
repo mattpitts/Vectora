@@ -14,18 +14,18 @@ class ShapeList extends React.Component {
 						id={i}
 						onClick={() => this.props.actions.selectShape(i)}
 						>
-						{shape.type}
+						{convertShapeName(shape.type)}
 					</p>
 			} else {
 				return <p
 						key={i}
 						id={i}
-						onClick={() => this.props.actions.selectShape(i)}>{shape.type}
+						onClick={() => this.props.actions.selectShape(i)}>{convertShapeName(shape.type)}
 						</p>
 			}
 		});
 		return (
-			<div>
+			<div className={'ShapeListContainer'}>
 				<div className={'PropertyHeader'}>
 					<h4>Shapes</h4>
 				</div>
@@ -38,6 +38,17 @@ class ShapeList extends React.Component {
 
 
 		)
+	}
+}
+
+function convertShapeName(type) {
+	switch(type) {
+		case 'rect':
+			return 'Rectangle';
+		case 'path':
+			return 'Path';
+		case 'circle':
+			return 'Circle';
 	}
 }
 

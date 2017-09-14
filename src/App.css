@@ -28,27 +28,32 @@ body {
 	position: fixed;
 	margin-left: 86vw;
 }
+.ShapeListContainer {
+	margin-top: 2vh;
+}
 .ShapeList {
-	padding: 5px 0 5px 15%;
-	height: 8vh;
-	max-height: 8vh;
-	overflow-y: scroll;
-	background-color: #ffffff;
+	padding: 5px 0 5px 0;
+	width: 99%;
+	height: 35vh;
+	max-height: 35vh;
+	overflow-y: auto;
+	background-color: #efefef;
 }
 .ShapeList p {
-	padding: 0;
+	padding: 1px 0 1px 5px;
 	margin: 0;
 	cursor: pointer;
 	draggable: true;
 }
 .ShapeList p:hover {
-	color: red;
+	background-color: #dedede;
 }
 .ShapeList p:active {
 	color: white;
 }
 .ShapeListSelected {
-	color: blue;
+	color: #010199;
+	background-color: #cdcdcd;
 }
 .SketchPickerContainer {
 	display: flex;
@@ -72,14 +77,25 @@ body {
 	margin: 0;
 	padding: 0;
 }
-
-.toolbar-container {
-	height: 99.5vh;
-	width: 8vw;
+.LeftPanel {
+	display: flex;
+	flex-direction: column;
+	margin: 0;
 	padding: 0;
 	position: fixed;
+	width: 8vw;
+	height: 99.5vh;
 	background-color: #d6d6d6;
+
+
 	box-shadow: 1px 0px 2px #b2b2b2;
+}
+.LeftPanel .PropertyHeader {
+	box-shadow: 1px 1px 2px #b2b2b2;
+}
+.toolbar-container {
+	padding: 0;
+	background-color: #d6d6d6;
 }
 
 .toolbar-container ul {

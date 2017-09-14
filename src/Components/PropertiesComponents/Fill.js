@@ -31,7 +31,7 @@ class Fill extends React.Component {
 					key={1}
 					color={this.props.fill}
 					onChange={this.updateFillProperty}
-					width={'12vw'}
+					width={'12.5vw'}
 				/>}
 			</div>
 		)
