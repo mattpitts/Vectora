@@ -18,7 +18,8 @@ class ArtBoard extends React.Component {
 		super(props);
 		this.state = {
 			mouseDown: false,
-			nodeDrag: false
+			nodeDrag: false,
+			draggingShape: false
 		}
 		this.onMouseDown = this.onMouseDown.bind(this);
 		this.onMouseUp = this.onMouseUp.bind(this);
@@ -47,6 +48,20 @@ class ArtBoard extends React.Component {
 				nodeDrag: event.target.id
 			})
 			this.forceUpdate();
+		} else if(!isNaN(event.target.id) && this.props.selected && shapeUtilities.getSelectedIndex(this.props.shapes) == event.target.id){
+			let initialBox = Object.assign({}, {...this.props.shapes[event.target.id].boundingBox})
+			this.setState({
+				...this.state,
+				mouseDown: true,
+				draggingShape: {
+					initialCoords: {
+						x: event.clientX - window.innerWidth * .08,
+						y: event.clientY
+					},
+					initialBox
+				}
+			})
+			this.forceUpdate();
 		} else {
 			this.setState({
 				...this.state,
@@ -60,7 +75,8 @@ class ArtBoard extends React.Component {
 		this.setState({
 			...this.state,
 			mouseDown: false,
-			nodeDrag: false
+			nodeDrag: false,
+			draggingShape: false
 		});
 		if(this.props.newShape) {
 			this.props.actions.shapeActions.finishShape(this.props.newShape);
@@ -71,7 +87,14 @@ class ArtBoard extends React.Component {
 	}
 
 	onMouseMove(event) {
-		if(this.state.mouseDown && !this.state.nodeDrag) {
+		if(this.state.draggingShape) {
+			let selectedShape = shapeUtilities.getSelectedShape(this.props.shapes);
+			selectedShape = shapeUtilities.moveShapeBoundingBox(selectedShape, event.clientX, event.clientY, this.state.draggingShape.initialCoords, this.state.draggingShape.initialBox)
+			shapeUtilities.matchShapeToBoundingBox(selectedShape);
+			this.props.actions.shapeActions.resizeShape(selectedShape);
+			this.forceUpdate();
+		}
+		if(this.state.mouseDown && !this.state.nodeDrag && !this.state.draggingShape) {
 			if(!this.props.drag.dragging) {
 				this.props.actions.dragActions.beginDrag(
 					utilities.getDragArea(event.clientX, event.clientY)
@@ -97,7 +120,11 @@ class ArtBoard extends React.Component {
 				}
 			} else if(this.props.tool === 'path') {
 				this.props.actions.shapeActions.changeShape(
-					shapeUtilities[this.props.tool].update(event.clientX, event.clientY, this.props.newShape)
+					shapeUtilities[this.props.tool].update(
+						event.clientX,
+						event.clientY,
+						this.props.newShape
+					)
 				)
 			} else {
 				let updatedShape = shapeUtilities[this.props.tool].update(this.props.drag.area, this.props.newShape);

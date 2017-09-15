@@ -15,7 +15,7 @@ const circle = {
 			cy: area.yMin + ((area.yMax - area.yMin) / 2),
 			r: r,
 			stroke: 'none',
-			strokeWidth: '8px',
+			strokeWidth: 8,
 			fill: 'grey',
 			boundingBox: boundingBox,
 			selected: true

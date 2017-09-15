@@ -15,6 +15,3 @@ export default function dragBox(area) {
 		/>
 	)
 }
-
-
-//"rgba(.2,.2,.2,.3)"

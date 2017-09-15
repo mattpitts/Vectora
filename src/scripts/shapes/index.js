@@ -8,6 +8,7 @@ import getSelectedShape from './getSelectedShape';
 import getSelectedIndex from './getSelectedIndex';
 import resizeShape from './resizeShape';
 import matchShapeToBoundingBox from './matchShapeToBoundingBox';
+import moveShapeBoundingBox from './moveShapeBoundingBox';
 
 const shapeUtilities = {
 	path,
@@ -19,7 +20,8 @@ const shapeUtilities = {
 	getSelectedShape,
 	getSelectedIndex,
 	resizeShape,
-	matchShapeToBoundingBox
+	matchShapeToBoundingBox,
+	moveShapeBoundingBox
 }
 
 export default shapeUtilities;
