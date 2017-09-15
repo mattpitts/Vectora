@@ -25,7 +25,10 @@ class Fill extends React.Component {
 			<div>
 				<div className='PropertyHeader'>
 					<h4>Fill</h4>
-					<input type='checkbox' checked={value} onChange={(event) => this.onCheckBoxChange(event)}></input>
+					<input
+						type='checkbox'
+						checked={value} onChange={(event) => this.onCheckBoxChange(event)}>
+					</input>
 				</div>
 				{this.props.fill !== 'none' && <SketchPicker
 					key={1}

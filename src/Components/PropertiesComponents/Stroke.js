@@ -29,12 +29,31 @@ class Stroke extends React.Component {
 					<h4>Stroke</h4>
 					<input type='checkbox' checked={value} onChange={(event) => this.onCheckBoxChange(event)}></input>
 				</div>
-				{this.props.stroke !== 'none' && <SketchPicker
-					key={1}
-					color={this.props.stroke}
-					onChange={this.updateStrokeColor}
-					width={'12.5vw'}
-				/>}
+				{this.props.stroke !== 'none' &&
+					<div>
+						<div className={'StrokeForm'}>
+							<form>
+								<label className={'StrokeWidthInputLabel'}htmlFor={'StrokeWidthInput'}>Width:</label>
+								<input
+									id={'StrokeWidthInput'}
+									className={'StrokeWidthInput'}
+									type='number'
+									value={this.props.strokeWidth}
+									onChange={(event) => this.props.onPropertyChange('strokeWidth', event.target.value)}
+									onFocus={() => this.props.toggleShapeDeletePermission(false)}
+									onBlur={() => this.props.toggleShapeDeletePermission(true)}>
+								</input>
+							</form>
+						</div>
+
+						<SketchPicker
+							key={1}
+							color={this.props.stroke}
+							onChange={this.updateStrokeColor}
+							width={'12.5vw'}
+							/>
+					</div>
+				}
 			</div>
 		)
 	}

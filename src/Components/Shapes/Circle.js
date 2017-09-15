@@ -8,6 +8,8 @@ const Circle = (props) => {
 			cy={props.cy}
 			r={props.r}
 			fill={props.fill}
+			stroke={props.stroke}
+			strokeWidth={props.strokeWidth}
 		/>
 	)
 }

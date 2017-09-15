@@ -14,6 +14,8 @@ export default function constructor(shape, i) {
 					cy={shape.cy}
 					r={shape.r}
 					fill={shape.fill}
+					stroke={shape.stroke}
+					strokeWidth={shape.strokeWidth}
 				/>
 			)
 		case 'rect':
@@ -26,6 +28,8 @@ export default function constructor(shape, i) {
 					rx={shape.rx}
 					ry={shape.ry}
 					width={shape.width}
+					stroke={shape.stroke}
+					strokeWidth={shape.strokeWidth}
 					height={shape.height}
 					fill={shape.fill}
 				/>

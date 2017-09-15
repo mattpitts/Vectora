@@ -12,7 +12,6 @@ class KeyboardControls extends React.Component {
 		initKeyboardEventListeners(this.props.actions);
 	}
 	translateKeycode(code) {
-		console.log(code);
 	}
 	render() {
 		return(

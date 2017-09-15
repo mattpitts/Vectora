@@ -17,7 +17,8 @@ class ArtBoard extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			mouseDown: false
+			mouseDown: false,
+			nodeDrag: false
 		}
 		this.onMouseDown = this.onMouseDown.bind(this);
 		this.onMouseUp = this.onMouseUp.bind(this);
@@ -28,25 +29,38 @@ class ArtBoard extends React.Component {
 
 
 	onClick(event) {
-		if(event.target.id === "ArtBoard") {
+		if(!event.target.id) {
+			return;
+		}
+		if(event.target.id === "ArtBoard" && !this.state.nodeDrag) {
 			this.props.actions.shapeActions.unselectShapes();
-		} else {
+		} else if(!this.state.nodeDrag){
 			this.props.actions.shapeActions.unselectShapes();
 			this.props.actions.shapeActions.selectShape(event.target.id);
 		}
 	}
 
 	onMouseDown(event) {
-		this.setState({
-			mouseDown: true
-		})
+		if(isNaN(event.target.id) && event.target.id !== 'ArtBoard') {
+			this.setState({
+				mouseDown: true,
+				nodeDrag: event.target.id
+			})
+			this.forceUpdate();
+		} else {
+			this.setState({
+				...this.state,
+				mouseDown: true
+			})
+		}
 		// console.log(event.target);
 	}
 
 	onMouseUp(event) {
 		this.setState({
+			...this.state,
 			mouseDown: false,
-			lastClick: null
+			nodeDrag: false
 		});
 		if(this.props.newShape) {
 			this.props.actions.shapeActions.finishShape(this.props.newShape);
@@ -57,7 +71,7 @@ class ArtBoard extends React.Component {
 	}
 
 	onMouseMove(event) {
-		if(this.state.mouseDown) {
+		if(this.state.mouseDown && !this.state.nodeDrag) {
 			if(!this.props.drag.dragging) {
 				this.props.actions.dragActions.beginDrag(
 					utilities.getDragArea(event.clientX, event.clientY)
@@ -90,6 +104,15 @@ class ArtBoard extends React.Component {
 				this.props.actions.shapeActions.changeShape(updatedShape);
 				this.forceUpdate();
 			}
+		}
+		if(this.state.nodeDrag) {
+			let selectedShape = shapeUtilities.getSelectedShape(this.props.shapes);
+			selectedShape = shapeUtilities.resizeShape(selectedShape, event.clientX, event.clientY, this.state.nodeDrag);
+			shapeUtilities.matchShapeToBoundingBox(selectedShape);
+			let index = shapeUtilities.getSelectedIndex(this.props.shapes)
+			this.props.actions.shapeActions.resizeShape({selectedShape, index})
+			this.forceUpdate();
+			// selectedShape = shapeUtilities.matchShapeToBoundingBox(selectedShape);
 		}
 	}
 

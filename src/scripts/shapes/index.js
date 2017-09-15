@@ -5,6 +5,9 @@ import constructor from './constructor';
 import selectedConstructor from './selectedConstructor';
 import dragBox from './dragBox';
 import getSelectedShape from './getSelectedShape';
+import getSelectedIndex from './getSelectedIndex';
+import resizeShape from './resizeShape';
+import matchShapeToBoundingBox from './matchShapeToBoundingBox';
 
 const shapeUtilities = {
 	path,
@@ -13,7 +16,10 @@ const shapeUtilities = {
 	constructor,
 	selectedConstructor,
 	dragBox,
-	getSelectedShape
+	getSelectedShape,
+	getSelectedIndex,
+	resizeShape,
+	matchShapeToBoundingBox
 }
 
 export default shapeUtilities;

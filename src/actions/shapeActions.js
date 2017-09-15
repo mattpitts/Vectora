@@ -16,18 +16,12 @@ export function unselectShapes() {
 export function deleteSelectedShape() {
 	return { type: 'DELETE_SELECTED_SHAPE' }
 }
-// export function changeShapeFill(payload) {
-// 	return { type: 'CHANGE_SHAPE_FILL', payload }
-// }
-// export function changeShapeStroke(payload) {
-// 	return { type: 'CHANGE_SHAPE_STROKE', payload }
-// }
-// export function changeShapeStrokeColor(payload) {
-// 	return { type: 'CHANGE_SHAPE_STROKE_COLOR', payload }
-// }
-// export function changeShapeStrokeWidth(payload) {
-// 	return { type: 'CHANGE_SHAPE_STROKE_WIDTH', payload }
-// }
+export function toggleShapeDeletePermission(payload) {
+	return { type: 'TOGGLE_SHAPE_DELETE_PERMISSION', payload }
+}
+export function resizeShape(payload) {
+	return { type: 'RESIZE_SHAPE', payload }
+}
 export function changeShapeProperty(payload) {
 	return { type: 'CHANGE_SHAPE_PROPERTY', payload }
 }

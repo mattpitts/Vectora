@@ -1,4 +1,4 @@
-export default function shapeReducer(state = {shapes: [], new: false, selected: false}, action) {
+export default function shapeReducer(state = {shapes: [], new: false, selected: false, deletePermission: true}, action) {
 	let newShapes;
 	switch(action.type) {
 		case 'CREATE_SHAPE':
@@ -6,7 +6,7 @@ export default function shapeReducer(state = {shapes: [], new: false, selected: 
 		case 'CHANGE_SHAPE':
 			return {...state, shapes: state.shapes, new: action.shape}
 		case 'FINISH_SHAPE':
-			return {shapes: [...state.shapes, action.shape], new: false, selected: true}
+			return {...state, shapes: [...state.shapes, action.shape], new: false, selected: true}
 		case 'SELECT_SHAPE':
 			newShapes = state.shapes.map((shape, i) => {
 				if(i == action.id) {
@@ -33,6 +33,9 @@ export default function shapeReducer(state = {shapes: [], new: false, selected: 
 			})
 			return {...state, shapes: unselectedShapes, selected: false}
 		case 'DELETE_SELECTED_SHAPE':
+			if(!state.deletePermission) {
+				return state;
+			}
 			let selectedIndex
 			for (let i = 0; i < state.shapes.length; i++) {
 				if(state.shapes[i].selected) {
@@ -42,10 +45,7 @@ export default function shapeReducer(state = {shapes: [], new: false, selected: 
 			let before = state.shapes.slice(0, selectedIndex)
 			let after = state.shapes.slice(selectedIndex + 1, state.shapes.length)
 			let shapes = [...before, ...after];
-			console.log(shapes);
 			return {...state, shapes: [...before, ...after]}
-			// console.log(state);
-			// return state;
 		case 'CHANGE_SHAPE_PROPERTY':
 			newShapes = state.shapes.map((shape, i) => {
 				if(i == action.payload.id) {
@@ -56,6 +56,11 @@ export default function shapeReducer(state = {shapes: [], new: false, selected: 
 				}
 			})
 			return {...state, shapes: newShapes}
+		case 'RESIZE_SHAPE':
+			state.shapes[action.payload.index] = action.payload.selectedShape
+			return state;
+		case 'TOGGLE_SHAPE_DELETE_PERMISSION':
+			return {...state, deletePermission: action.payload}
 		default:
 			return state;
 	}

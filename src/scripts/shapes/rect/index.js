@@ -11,7 +11,7 @@ const rect = {
 			fill: 'grey',
 			selected: true,
 			stroke: 'none',
-			strokeWidth: '8px',
+			strokeWidth: 5,
 			boundingBox: area
 		}
 	},

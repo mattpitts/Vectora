@@ -157,3 +157,10 @@ body {
 .rm {
 	cursor: ew-resize;
 }
+.StrokeWidthInput {
+	width: 15%;
+}
+.StrokeWidthInputLabel {
+	font-size: .6em;
+	padding: 5px;
+}
