@@ -151,7 +151,7 @@ class ArtBoard extends React.Component {
 			dragBox = shapeUtilities.dragBox(this.props.drag.area);
 		}
 		if(this.props.newShape) {
-			newShape = shapeUtilities.constructor(this.props.newShape,1);
+			newShape = shapeUtilities.constructor(this.props.newShape,10000);
 		}
 		let shapes = this.props.shapes.map((shape, i) => {
 			if(!shape.selected) {
