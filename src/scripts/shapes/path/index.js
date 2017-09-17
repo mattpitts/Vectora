@@ -1,6 +1,5 @@
 const path = {
 	create(x, y, props) {
-		x -= window.innerWidth * 0.08;
 		return {
 			type: 'path',
 			selected: true,
@@ -17,7 +16,6 @@ const path = {
 		}
 	},
 	update(x, y, path) {
-		x -= window.innerWidth * 0.08;
 		if(x < path.boundingBox.xMin) {
 			path.boundingBox.xMin = x;
 		}

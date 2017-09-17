@@ -45,5 +45,7 @@ export default function constructor(shape, i) {
 					strokeWidth={shape.strokeWidth}
 				/>
 			)
+		default:
+			console.log('Invalid shape type');
 	}
 }

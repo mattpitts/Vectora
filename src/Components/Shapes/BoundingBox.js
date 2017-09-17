@@ -2,7 +2,6 @@ import React from 'react';
 import Rect from './Rect';
 const miniBoxSize = '6px'
 const miniBoxNum = 6;
-const miniBoxColor = 'blue';
 
 const BoundingBox = (props) => {
 	return (

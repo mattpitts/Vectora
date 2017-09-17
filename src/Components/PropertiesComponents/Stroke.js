@@ -22,7 +22,7 @@ class Stroke extends React.Component {
 		}
 	}
 	render() {
-		let value = this.props.stroke == 'none' ? false : true;
+		let value = this.props.stroke === 'none' ? false : true;
 		return (
 			<div>
 				<div className='PropertyHeader'>

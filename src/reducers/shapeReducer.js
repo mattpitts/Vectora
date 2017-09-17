@@ -1,4 +1,13 @@
-export default function shapeReducer(state = {shapes: [], new: false, selected: false, deletePermission: true}, action) {
+const initialState = {
+	projectID: false,
+	projectName: false,
+	shapes: [],
+	new: false,
+	selected: false,
+	deletePermission: true,
+}
+
+export default function shapeReducer(state = initialState, action) {
 	let newShapes;
 	switch(action.type) {
 		case 'CREATE_SHAPE':
@@ -9,7 +18,7 @@ export default function shapeReducer(state = {shapes: [], new: false, selected: 
 			return {...state, shapes: [...state.shapes, action.shape], new: false, selected: true}
 		case 'SELECT_SHAPE':
 			newShapes = state.shapes.map((shape, i) => {
-				if(i == action.id) {
+				if(i === +action.id) {
 					shape.selected = true;
 					return shape;
 				} else {
@@ -44,11 +53,11 @@ export default function shapeReducer(state = {shapes: [], new: false, selected: 
 			}
 			let before = state.shapes.slice(0, selectedIndex)
 			let after = state.shapes.slice(selectedIndex + 1, state.shapes.length)
-			let shapes = [...before, ...after];
+			// let shapes = [...before, ...after];
 			return {...state, shapes: [...before, ...after]}
 		case 'CHANGE_SHAPE_PROPERTY':
 			newShapes = state.shapes.map((shape, i) => {
-				if(i == action.payload.id) {
+				if(i === +action.payload.id) {
 					shape[action.payload.property] = action.payload.value;
 					return shape;
 				} else {
@@ -59,8 +68,10 @@ export default function shapeReducer(state = {shapes: [], new: false, selected: 
 		case 'RESIZE_SHAPE':
 			state.shapes[action.payload.index] = action.payload.selectedShape
 			return state;
-		case 'TOGGLE_SHAPE_DELETE_PERMISSION':
-			return {...state, deletePermission: action.payload}
+		case 'FETCH_PROJECT_REQUEST':
+			return {...state, fetching: true }
+		case 'FETCH_PROJECT_SUCCESS':
+		case 'FETCH_PROJECT_FAILURE':
 		default:
 			return state;
 	}

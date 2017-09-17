@@ -1,5 +1,4 @@
 export default function moveShapeBoundingBox(shape, x, y, initialCoords, initialBox) {
-	x -= window.innerWidth * .08;
 	let xDiff = initialCoords.x - x;
 	let yDiff = initialCoords.y - y;
 	shape.boundingBox.xMin = initialBox.xMin - xDiff;

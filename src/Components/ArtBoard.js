@@ -6,6 +6,7 @@ import { bindActionCreators } from 'redux';
 import Circle from './Shapes/Circle';
 import Rect from './Shapes/Rect';
 import Path from './Shapes/Path';
+import LogIn from './LogIn';
 import KeyboardControls from './KeyboardControls';
 import * as shapeActions from '../actions/shapeActions';
 import * as dragActions from '../actions/dragActions';
@@ -55,7 +56,7 @@ class ArtBoard extends React.Component {
 				mouseDown: true,
 				draggingShape: {
 					initialCoords: {
-						x: event.clientX - window.innerWidth * .08,
+						x: event.clientX,
 						y: event.clientY
 					},
 					initialBox
@@ -99,6 +100,7 @@ class ArtBoard extends React.Component {
 				this.props.actions.dragActions.beginDrag(
 					utilities.getDragArea(event.clientX, event.clientY)
 				);
+				this.forceUpdate();
 			} else {
 				if(this.props.selected) {
 					this.props.actions.shapeActions.unselectShapes();
@@ -144,6 +146,7 @@ class ArtBoard extends React.Component {
 	}
 
 	render() {
+		let globalTranslate = `translate(-${window.innerWidth * 0.1})`
 		let newShape;
 		let dragBox;
 		let selectedShape;
@@ -158,6 +161,7 @@ class ArtBoard extends React.Component {
 				return shapeUtilities.constructor(shape, i);
 			} else {
 				selectedShape = shapeUtilities.selectedConstructor(shape, i);
+				return;
 			}
 		});
 		return (
@@ -170,10 +174,13 @@ class ArtBoard extends React.Component {
 					onMouseMove={(event) => this.onMouseMove(event)}
 					onClick={(event) => this.onClick(event)}
 					className="ArtBoard">
-					{shapes}
-					{newShape}
-					{selectedShape}
-					{dragBox}
+					<g transform={globalTranslate}>
+
+						{shapes}
+						{newShape}
+						{selectedShape}
+						{dragBox}
+					</g>
 				</svg>
 			</div>
 
@@ -188,7 +195,8 @@ function mapStateToProps(state, ownProps) {
 		selected: state.shapes.selected,
 		tool: state.toolbar,
 		drag: state.drag,
-		properties: state.properties
+		properties: state.properties,
+		layout: state.layout
 	};
 };
 

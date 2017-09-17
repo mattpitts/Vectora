@@ -49,6 +49,8 @@ function convertShapeName(type) {
 			return 'Path';
 		case 'circle':
 			return 'Circle';
+		default:
+			return;
 	}
 }
 

@@ -20,7 +20,7 @@ class Fill extends React.Component {
 		}
 	}
 	render() {
-		let value = this.props.fill == 'none' ? false : true;
+		let value = this.props.fill === 'none' ? false : true;
 		return (
 			<div>
 				<div className='PropertyHeader'>

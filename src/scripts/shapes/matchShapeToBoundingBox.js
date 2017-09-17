@@ -13,6 +13,14 @@ export default function matchShapeToBoundingBox(shape) {
 			shape.r = r;
 			shape.cx = shape.boundingBox.xMin + (width / 2);
 			shape.cy = shape.boundingBox.yMin + (height / 2);
+			// shape.boundingBox = {
+			// 	xMin: shape.cx - r,
+			// 	xMax: shape.cx + r,
+			// 	yMin: shape.cy - r,
+			// 	yMax: shape.cy + r
+			// }
 			return shape;
+		default:
+			console.log('Invalid Shape Type');
 	}
 }

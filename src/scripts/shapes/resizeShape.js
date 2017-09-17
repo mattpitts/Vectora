@@ -1,5 +1,4 @@
 export default function resizeShape(shape, x, y, nodeDrag) {
-	x -= window.innerWidth * .08
 	switch(nodeDrag) {
 		case 'lm':
 			if(x < shape.boundingBox.xMax) {
