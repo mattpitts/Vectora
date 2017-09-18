@@ -67,11 +67,15 @@ export default function shapeReducer(state = initialState, action) {
 			return {...state, shapes: newShapes}
 		case 'RESIZE_SHAPE':
 			state.shapes[action.payload.index] = action.payload.selectedShape
-			return state;
-		case 'FETCH_PROJECT_REQUEST':
-			return {...state, fetching: true }
-		case 'FETCH_PROJECT_SUCCESS':
-		case 'FETCH_PROJECT_FAILURE':
+			return {...state};
+		case 'SET_PROJECT_ID':
+			return {...state, projectID: action.id, projectName: action.name }
+		case 'LOAD_PROJECT':
+			return {...state, projectID: action.project._id, shapes: action.project.shapes, projectName: action.project.name }
+		// case 'FETCH_PROJECT_REQUEST':
+		// 	return {...state, fetching: true }
+		// case 'FETCH_PROJECT_SUCCESS':
+		// case 'FETCH_PROJECT_FAILURE':
 		default:
 			return state;
 	}

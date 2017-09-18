@@ -258,6 +258,10 @@ body {
 	margin: 3%;
 	min-height: 80%;
 	min-width: 94%;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	overflow-y: scroll;
 }
 
 .project-card {
@@ -272,4 +276,35 @@ body {
 }
 .project-card:hover {
 	box-shadow: 1px 1px 1px grey;
+}
+
+.save-project-modal {
+	position: fixed;
+	top: 37.5vh;
+	left: 37.5vw;
+	width: 25vw;
+	height: 25vh;
+	background-color: white;
+	box-shadow: 3px 3px 10px grey;
+	z-index: 1001;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
+}
+.save-project-modal input {
+	height: 25px;
+	font-size: 1.1em;
+}
+.save-new-submit {
+	margin-top: 10%;
+	font-size: 1em;
+	background-color: #ededed;
+	box-shadow: 1.5px 1.5px 1px grey;
+	text-align: center;
+	align-self: center;
+	padding: 5px;
+}
+.save-new-submit:active {
+	box-shadow: .1px .1px .1px grey;
 }

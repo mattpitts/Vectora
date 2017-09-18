@@ -25,12 +25,18 @@ export function resizeShape(payload) {
 export function changeShapeProperty(payload) {
 	return { type: 'CHANGE_SHAPE_PROPERTY', payload }
 }
-export function fetchProjectRequest() {
-	return { type: 'FETCH_PROJECT', status: 'fetching'}
+export function setProjectId(id, name) {
+	return { type: 'SET_PROJECT_ID', id, name }
 }
-export function fetchProjectSuccess(project) {
-	return { type: 'FETCH_PROJECT', status: 'success', project }
+export function loadProject(project) {
+	return { type: 'LOAD_PROJECT', project }
 }
-export function fetchProjectFailure(error) {
-	return { type: 'FETCH_PROJECT', status: 'failure', error }
-}
+// export function fetchProjectRequest() {
+// 	return { type: 'FETCH_PROJECT', status: 'fetching'}
+// }
+// export function fetchProjectSuccess(project) {
+// 	return { type: 'FETCH_PROJECT', status: 'success', project }
+// }
+// export function fetchProjectFailure(error) {
+// 	return { type: 'FETCH_PROJECT', status: 'failure', error }
+// }

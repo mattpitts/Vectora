@@ -6,6 +6,7 @@ import axios from 'axios';
 import ProjectCard from './ProjectCard';
 import * as authActions from '../actions/authActions';
 import * as layoutActions from '../actions/layoutActions';
+import * as shapeActions from '../actions/shapeActions';
 
 // const API_URL = window.location.href === 'http://localhost:3001' ? 'http://localhost:3000/api/v1' : 'tbd';
 const API_URL = 'http://localhost:3000/api/v1'
@@ -13,10 +14,11 @@ class UserProjects extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			status: ''
+			status: '',
+			projects: false
 		}
 		this.onHandleChange = this.onHandleChange.bind(this);
-		this.onSubmit = this.onSubmit.bind(this);
+		this.onProjectClick = this.onProjectClick.bind(this);
 	}
 	onHandleChange(event) {
 		this.setState({
@@ -28,13 +30,33 @@ class UserProjects extends React.Component {
 	componentDidMount() {
 		axios.get(`${API_URL}/${localStorage.userID}/projects`)
 			.then(response => {
-				console.log(response);
+				this.setState({
+					...this.state,
+					projects: response.data
+				});
 			})
 	}
-	onSubmit() {
-
+	onProjectClick(index) {
+		console.log(this.state.projects[index]);
+		setTimeout(() => {
+			this.props.actions.shapeActions.loadProject(this.state.projects[index])
+			this.props.actions.layoutActions.hideModal()
+		}, 800);
 	}
 	render() {
+		let projects;
+		if(this.state.projects) {
+			projects = this.state.projects.map((project, i) => {
+				return (
+						<ProjectCard
+							name={project.name}
+							id={i}
+							key={i}
+							onProjectClick={this.onProjectClick}
+						/>
+				)
+			})
+		}
 		return (
 			<div>
 				<div className="project-modal">
@@ -42,9 +64,7 @@ class UserProjects extends React.Component {
 						<h3>Projects</h3>
 					</div>
 					<div className="projects-container">
-						<ProjectCard
-							name="poopoo"
-						/>
+						{projects}
 					</div>
 				</div>
 			</div>
@@ -61,7 +81,8 @@ function mapDispatchToProps(dispatch) {
 	return {
 		actions: {
 			authActions: bindActionCreators(authActions, dispatch),
-			layoutActions: bindActionCreators(layoutActions, dispatch)
+			layoutActions: bindActionCreators(layoutActions, dispatch),
+			shapeActions: bindActionCreators(shapeActions, dispatch)
 		}
 	}
 }

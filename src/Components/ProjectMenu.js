@@ -33,11 +33,19 @@ class ProjectMenu extends React.Component {
 				</div>
 		}
 		let saveOptions;
+		let loadOptions;
 		if(this.props.auth.username) {
+			loadOptions =
+				<div className="saveOptions">
+					<div
+						onClick={this.props.actions.layoutActions.showUserProjectsModal}
+						className='save-as'>Load</div>
+				</div>
+
 			if(this.props.shapes.projectID) {
 				saveOptions =
 					<div className="save-options">
-						<p>this.props.shapes.projectName</p>
+						<p>{this.props.shapes.projectName}</p>
 						<div className='save'>Save</div>
 					</div>
 			} else {
@@ -53,7 +61,7 @@ class ProjectMenu extends React.Component {
 			<div className="ProjectMenuContainer">
 				{userInfo}
 				{saveOptions}
-
+				{loadOptions}
 			</div>
 		)
 	}
