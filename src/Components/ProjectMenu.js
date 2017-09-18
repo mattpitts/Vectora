@@ -11,10 +11,11 @@ class ProjectMenu extends React.Component {
 		if(this.props.auth.username) {
 			userInfo =
 				<div className='user-info'>
+					<p>Hi, {this.props.auth.username}</p>
 					<div
 						onClick={this.props.actions.authActions.logOut}
 						className='auth-button'>
-						Logout
+						Log Out
 					</div>
 				</div>
 		} else {
@@ -44,9 +45,10 @@ class ProjectMenu extends React.Component {
 
 			if(this.props.shapes.projectID) {
 				saveOptions =
-					<div className="save-options">
-						<p>{this.props.shapes.projectName}</p>
-						<div className='save'>Save</div>
+					<div className="saveOptions">
+						<div
+							onClick={this.props.actions.layoutActions.showUserProjectsModal}
+							className='save-as'>Save</div>
 					</div>
 			} else {
 				saveOptions =
@@ -60,12 +62,20 @@ class ProjectMenu extends React.Component {
 		let newOption = <div
 							className='saveOptions'
 							onClick={this.props.actions.shapeActions.clearArtBoard}>New</div>
+		let exportOption = <div
+							className='saveOptions'
+							onClick={this.props.actions.shapeActions.clearArtBoard}>Export</div>
 		return (
 			<div className="ProjectMenuContainer">
-				{userInfo}
+				<div className='PropertyHeader'>
+					<h4>Options</h4>
+				</div>
+
 				{saveOptions}
 				{loadOptions}
 				{newOption}
+				{exportOption}
+				{userInfo}
 			</div>
 		)
 	}

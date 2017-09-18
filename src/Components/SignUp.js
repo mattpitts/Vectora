@@ -76,7 +76,7 @@ class SignUp extends React.Component {
 							<input onChange={(event) => this.onHandleChange(event)} type="password" value={this.state.password} placeholder="Enter password"></input>
 						</form>
 						<div onClick={this.onSubmit} className='login-submit'>Submit</div>
-						<p>{this.state.status}</p>
+						<p className="api-status">{this.state.status}</p>
 
 					</div>
 				</div>

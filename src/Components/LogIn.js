@@ -25,7 +25,8 @@ class LogIn extends React.Component {
 			[event.target.type]: event.target.value
 		})
 	}
-	onSubmit() {
+	onSubmit(event) {
+		event.preventDefault();
 		this.setState({
 			...this.state,
 			status: 'Fetching'
@@ -62,12 +63,13 @@ class LogIn extends React.Component {
 				<div className="modal">
 					<div className="login-container">
 						<h3>Log In</h3>
-						<form className="login-form">
+						<form className="login-form" onSubmit={(event) => this.onSubmit(event)}>
 							<input onChange={(event) => this.onHandleChange(event)} type="email" value={this.state.email} placeholder="Enter email"></input>
 							<input onChange={(event) => this.onHandleChange(event)} type="password" value={this.state.password} placeholder="Enter password"></input>
+							<input className="custom-submit"type="submit"></input>
 						</form>
-						<div onClick={this.onSubmit} className='login-submit'>Submit</div>
-						<p>{this.state.status}</p>
+
+						<p className="api-status">{this.state.status}</p>
 					</div>
 				</div>
 			</div>
@@ -87,5 +89,5 @@ function mapDispatchToProps(dispatch) {
 		}
 	}
 }
-
+// <div onClick={this.onSubmit} className='login-submit'>Submit</div>
 export default connect(mapStateToProps, mapDispatchToProps)(LogIn);

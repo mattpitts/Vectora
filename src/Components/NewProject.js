@@ -61,7 +61,7 @@ class NewProject extends React.Component {
 						<input onChange={(event) => this.onHandleChange(event)} type="text" value={this.state.name} placeholder="Enter project name"></input>
 					</form>
 					<div onClick={this.onSubmit} className='save-new-submit'>Save Project</div>
-					<p>{this.state.status}</p>
+					<p className="api-status">{this.state.status}</p>
 				</div>
 			</div>
 

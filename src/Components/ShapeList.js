@@ -27,7 +27,7 @@ class ShapeList extends React.Component {
 		return (
 			<div className={'ShapeListContainer'}>
 				<div className={'PropertyHeader'}>
-					<h4>Shapes</h4>
+					<h4>Layers</h4>
 				</div>
 				<div className={'ShapeList'}>
 
