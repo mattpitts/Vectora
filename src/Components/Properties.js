@@ -39,7 +39,7 @@ class Properties extends React.Component {
 					onPropertyChange={this.onPropertyChange}
 					stroke={selectedShape.stroke}
 					strokeWidth={selectedShape.strokeWidth}
-					toggleShapeDeletePermission={this.props.actions.shapeActions.toggleShapeDeletePermission}
+					setShapeDeletePermission={this.props.actions.shapeActions.setShapeDeletePermission}
 				/>}
 			</div>
 		)

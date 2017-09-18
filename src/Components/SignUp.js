@@ -5,6 +5,7 @@ import axios from 'axios';
 
 import * as authActions from '../actions/authActions';
 import * as layoutActions from '../actions/layoutActions';
+import * as shapeActions from '../actions/shapeActions';
 
 // const API_URL = window.location.href === 'http://localhost:3001' ? 'http://localhost:3000/api/v1' : 'tbd';
 const API_URL = 'http://localhost:3000/api/v1'
@@ -19,6 +20,12 @@ class SignUp extends React.Component {
 		}
 		this.onHandleChange = this.onHandleChange.bind(this);
 		this.onSubmit = this.onSubmit.bind(this);
+	}
+	componentDidMount() {
+		this.props.actions.shapeActions.setShapeDeletePermission(false);
+	}
+	componentWillUnmount() {
+		this.props.actions.shapeActions.setShapeDeletePermission(true);
 	}
 	onHandleChange(event) {
 		this.setState({
@@ -86,7 +93,8 @@ function mapDispatchToProps(dispatch) {
 	return {
 		actions: {
 			authActions: bindActionCreators(authActions, dispatch),
-			layoutActions: bindActionCreators(layoutActions, dispatch)
+			layoutActions: bindActionCreators(layoutActions, dispatch),
+			shapeActions: bindActionCreators(shapeActions, dispatch)
 		}
 	}
 }

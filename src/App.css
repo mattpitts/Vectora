@@ -308,3 +308,12 @@ body {
 .save-new-submit:active {
 	box-shadow: .1px .1px .1px grey;
 }
+.modal-hide-clicker {
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 99.5vw;
+	height: 99.5vh;
+	background-color: rgba(0,0,0,0);
+	z-index: 200;
+}

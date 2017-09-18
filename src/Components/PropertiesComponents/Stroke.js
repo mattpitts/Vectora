@@ -40,8 +40,8 @@ class Stroke extends React.Component {
 									type='number'
 									value={this.props.strokeWidth}
 									onChange={(event) => this.props.onPropertyChange('strokeWidth', event.target.value)}
-									onFocus={() => this.props.toggleShapeDeletePermission(false)}
-									onBlur={() => this.props.toggleShapeDeletePermission(true)}>
+									onFocus={() => this.props.setShapeDeletePermission(false)}
+									onBlur={() => this.props.setShapeDeletePermission(true)}>
 								</input>
 							</form>
 						</div>

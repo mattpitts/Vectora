@@ -28,6 +28,7 @@ class UserProjects extends React.Component {
 	}
 
 	componentDidMount() {
+		this.props.actions.shapeActions.setShapeDeletePermission(false);
 		axios.get(`${API_URL}/${localStorage.userID}/projects`)
 			.then(response => {
 				this.setState({
@@ -35,6 +36,9 @@ class UserProjects extends React.Component {
 					projects: response.data
 				});
 			})
+	}
+	componentWillUnmount() {
+		this.props.actions.shapeActions.setShapeDeletePermission(true);
 	}
 	onProjectClick(index) {
 		console.log(this.state.projects[index]);

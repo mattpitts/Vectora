@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import LeftPanel from './LeftPanel';
 
 import ArtBoard from './ArtBoard';
@@ -9,6 +10,7 @@ import SignUp from './SignUp';
 import UserProjects from './UserProjects';
 import NewProject from './NewProject';
 
+import * as layoutActions from '../actions/layoutActions';
 
 class Layout extends React.Component {
 
@@ -29,6 +31,12 @@ class Layout extends React.Component {
 				{this.props.layout.modal === 'signup' && <SignUp/>}
 				{this.props.layout.modal === 'projects' && <UserProjects/>}
 				{this.props.layout.modal === 'newProject' && <NewProject/>}
+				{this.props.layout.modal !== 'none' &&
+					<div
+						className='modal-hide-clicker'
+						onClick={() => this.props.actions.hideModal()}>
+					</div>
+				}
 			</div>
 		)
 	}
@@ -41,4 +49,9 @@ function mapStateToProps(state, ownProps) {
 		shapes: state.shapes
 	}
 }
-export default connect(mapStateToProps)(Layout);
+function mapDispatchToProps(dispatch) {
+	return {
+		actions: bindActionCreators(layoutActions, dispatch)
+	}
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Layout);

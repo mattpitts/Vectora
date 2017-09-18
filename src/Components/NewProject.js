@@ -17,6 +17,12 @@ class NewProject extends React.Component {
 		this.onHandleChange = this.onHandleChange.bind(this);
 		this.onSubmit = this.onSubmit.bind(this);
 	}
+	componentDidMount() {
+		this.props.actions.shapeActions.setShapeDeletePermission(false);
+	}
+	componentWillUnmount() {
+		this.props.actions.shapeActions.setShapeDeletePermission(true);
+	}
 	onHandleChange(event) {
 		this.setState({
 			...this.state,

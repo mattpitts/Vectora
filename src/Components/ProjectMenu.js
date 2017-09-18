@@ -57,11 +57,15 @@ class ProjectMenu extends React.Component {
 					</div>
 			}
 		}
+		let newOption = <div
+							className='saveOptions'
+							onClick={this.props.actions.shapeActions.clearArtBoard}>New</div>
 		return (
 			<div className="ProjectMenuContainer">
 				{userInfo}
 				{saveOptions}
 				{loadOptions}
+				{newOption}
 			</div>
 		)
 	}

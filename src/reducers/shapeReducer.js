@@ -41,6 +41,8 @@ export default function shapeReducer(state = initialState, action) {
 				}
 			})
 			return {...state, shapes: unselectedShapes, selected: false}
+		case 'SET_SHAPE_DELETE_PERMISSION':
+			return {...state, deletePermission: action.payload }
 		case 'DELETE_SELECTED_SHAPE':
 			if(!state.deletePermission) {
 				return state;
@@ -72,6 +74,8 @@ export default function shapeReducer(state = initialState, action) {
 			return {...state, projectID: action.id, projectName: action.name }
 		case 'LOAD_PROJECT':
 			return {...state, projectID: action.project._id, shapes: action.project.shapes, projectName: action.project.name }
+		case 'CLEAR_ARTBOARD':
+			return {...initialState}
 		// case 'FETCH_PROJECT_REQUEST':
 		// 	return {...state, fetching: true }
 		// case 'FETCH_PROJECT_SUCCESS':

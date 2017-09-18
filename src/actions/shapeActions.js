@@ -16,8 +16,8 @@ export function unselectShapes() {
 export function deleteSelectedShape() {
 	return { type: 'DELETE_SELECTED_SHAPE' }
 }
-export function toggleShapeDeletePermission(payload) {
-	return { type: 'TOGGLE_SHAPE_DELETE_PERMISSION', payload }
+export function setShapeDeletePermission(payload) {
+	return { type: 'SET_SHAPE_DELETE_PERMISSION', payload }
 }
 export function resizeShape(payload) {
 	return { type: 'RESIZE_SHAPE', payload }
@@ -30,6 +30,9 @@ export function setProjectId(id, name) {
 }
 export function loadProject(project) {
 	return { type: 'LOAD_PROJECT', project }
+}
+export function clearArtBoard() {
+	return { type: 'CLEAR_ARTBOARD' }
 }
 // export function fetchProjectRequest() {
 // 	return { type: 'FETCH_PROJECT', status: 'fetching'}
