@@ -43,6 +43,8 @@ export default function constructor(shape, i) {
 					fill={shape.fill}
 					stroke={shape.stroke}
 					strokeWidth={shape.strokeWidth}
+					translate={shape.translate}
+					scale={shape.scale}
 				/>
 			)
 		default:

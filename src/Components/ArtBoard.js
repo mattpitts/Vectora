@@ -174,13 +174,10 @@ class ArtBoard extends React.Component {
 					onMouseMove={(event) => this.onMouseMove(event)}
 					onClick={(event) => this.onClick(event)}
 					className="ArtBoard">
-					<g transform={globalTranslate}>
-
 						{shapes}
 						{newShape}
 						{selectedShape}
 						{dragBox}
-					</g>
 				</svg>
 			</div>
 

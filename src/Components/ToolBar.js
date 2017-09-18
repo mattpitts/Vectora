@@ -13,7 +13,6 @@ const toolNames = [
 ]
 class ToolBar extends React.Component {
 	render() {
-		console.log(this.props.tool);
 		const toolList = tools.map((tool, i) => {
 			let classString = 'tool-odd';
 			if(i === 0 || i % 2 === 0) {
@@ -21,9 +20,10 @@ class ToolBar extends React.Component {
 			}
 			if(this.props.tool === tool) {
 				return (
-					<li>
+					<li key={i}>
 						<p
 							className={`${classString} tool-selected`}
+
 							onClick={() => this.props.selectTool(tools[i])}>
 							{toolNames[i]}
 						</p>
@@ -31,9 +31,10 @@ class ToolBar extends React.Component {
 				)
 			} else {
 				return (
-					<li>
+					<li key={i}>
 						<p
 							className={classString}
+
 							onClick={() => this.props.selectTool(tools[i])}>
 							{toolNames[i]}
 						</p>

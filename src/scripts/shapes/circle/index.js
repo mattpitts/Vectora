@@ -1,5 +1,13 @@
 const circle = {
 	create(area, props) {
+		if(!area) {
+			area = {
+				xMin: 0,
+				xMax: 0,
+				yMin: 0,
+				yMax: 0
+			}
+		}
 		let xWidth = area.xMax - area.xMin;
 		let yWidth = area.yMax - area.yMin;
 		let r = xWidth > yWidth ? yWidth / 2 : xWidth / 2;

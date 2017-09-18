@@ -8,6 +8,7 @@ const Path = (props) => {
 			fill={props.fill}
 			stroke={props.stroke}
 			strokeWidth={props.strokeWidth}
+			transform={`${props.translate} ${props.scale}`}
 		/>
 	)
 }

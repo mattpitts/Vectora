@@ -20,6 +20,12 @@ const rect = {
 		rect.y = area.yMin;
 		rect.width = area.xMax - area.xMin;
 		rect.height = area.yMax - area.yMin;
+		if(rect.height < 0) {
+			rect.height = 0;
+		}
+		if(rect.width < 0) {
+			rect.width = 0;
+		}
 		rect.boundingBox = {
 			xMin: area.xMin,
 			xMax: area.xMax,

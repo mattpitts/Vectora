@@ -28,7 +28,7 @@ class Properties extends React.Component {
 	}
 	render() {
 		let selectedShape = shapeUtilities.getSelectedShape(this.props.shapes.shapes);
-		console.log(selectedShape);
+		// console.log(selectedShape);
 		return (
 			<div className={'PropertiesContainer'}>
 				{selectedShape && <Fill

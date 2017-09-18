@@ -20,6 +20,14 @@ export default function matchShapeToBoundingBox(shape) {
 			// 	yMax: shape.cy + r
 			// }
 			return shape;
+		case 'path':
+			let xDiff = shape.boundingBox.xMin - shape.minX;
+			let yDiff = shape.boundingBox.yMin - shape.minY;
+			let deltaW = (shape.boundingBox.xMax - shape.boundingBox.xMin) / (shape.originalBounds.xMax - shape.originalBounds.xMin);
+			let deltaH = (shape.boundingBox.yMax - shape.boundingBox.yMin) / (shape.originalBounds.yMax - shape.originalBounds.yMin);
+			shape.scale = `scale(${deltaW} ${deltaH})`;
+			shape.translate = `translate(${xDiff} ${yDiff})`;
+			return shape;
 		default:
 			console.log('Invalid Shape Type');
 	}

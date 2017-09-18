@@ -9,8 +9,8 @@ const BoundingBox = (props) => {
 			<Rect
 				key={1}
 				fill={'none'}
-				width={props.xMax - props.xMin}
-				height={props.yMax - props.yMin}
+				width={props.xMax - props.xMin > 0 ? props.xMax - props.xMin : 0}
+				height={props.yMax - props.yMin > 0 ? props.yMax - props.yMin : 0}
 				x={props.xMin}
 				y={props.yMin}
 				stroke={'gray'}
