@@ -5,7 +5,6 @@ const ProjectCard = (props) => {
 		<div className="project-card" onClick={() => props.onProjectClick(props.id)}>
 			<h4 className='project-name'>{props.name}</h4>
 				<img src="https://placeholdit.co//i/200x170?&bg=bcbcbc"/>
-
 		</div>
 	)
 }

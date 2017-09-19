@@ -76,10 +76,6 @@ export default function shapeReducer(state = initialState, action) {
 			return {...state, projectID: action.project._id, shapes: action.project.shapes, projectName: action.project.name }
 		case 'CLEAR_ARTBOARD':
 			return {...initialState}
-		// case 'FETCH_PROJECT_REQUEST':
-		// 	return {...state, fetching: true }
-		// case 'FETCH_PROJECT_SUCCESS':
-		// case 'FETCH_PROJECT_FAILURE':
 		default:
 			return state;
 	}

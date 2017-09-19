@@ -58,7 +58,12 @@ class NewProject extends React.Component {
 				<div className="save-project-container">
 					<h3>Save</h3>
 					<form className="save-project-form">
-						<input onChange={(event) => this.onHandleChange(event)} type="text" value={this.state.name} placeholder="Enter project name"></input>
+						<input
+							onFocus={() => this.props.actions.shapeActions.setShapeDeletePermission(false)}
+							onBlur={() => this.props.actions.shapeActions.setShapeDeletePermission(true)}
+							onChange={(event) => this.onHandleChange(event)}
+							type="text" value={this.state.name}
+							placeholder="Enter project name"></input>
 					</form>
 					<div onClick={this.onSubmit} className='save-new-submit'>Save Project</div>
 					<p className="api-status">{this.state.status}</p>

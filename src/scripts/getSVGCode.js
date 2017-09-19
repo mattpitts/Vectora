@@ -32,7 +32,7 @@ export default function getSVGCode(shapes) {
 				code += shapeString;
 				break;
 			default:
-				break
+				break;
 
 		}
 	})

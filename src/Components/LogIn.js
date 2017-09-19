@@ -5,6 +5,7 @@ import axios from 'axios';
 
 import * as authActions from '../actions/authActions';
 import * as layoutActions from '../actions/layoutActions';
+import * as shapeActions from '../actions/shapeActions';
 
 const API_URL = window.location.href === 'http://localhost:3001/' ? 'http://localhost:3000/api/v1' : 'https://vectorasvg.herokuapp.com/api/v1';
 
@@ -64,11 +65,27 @@ class LogIn extends React.Component {
 					<div className="login-container">
 						<h3>Log In</h3>
 						<form className="login-form" onSubmit={(event) => this.onSubmit(event)}>
-							<input onChange={(event) => this.onHandleChange(event)} type="email" value={this.state.email} placeholder="Enter email"></input>
-							<input onChange={(event) => this.onHandleChange(event)} type="password" value={this.state.password} placeholder="Enter password"></input>
-							<input className="custom-submit"type="submit"></input>
+							<input
+								onFocus={() => this.props.actions.shapeActions.setShapeDeletePermission(false)}
+								onBlur={() => this.props.actions.shapeActions.setShapeDeletePermission(true)}
+								onChange={(event) => this.onHandleChange(event)}
+								type="email"
+								value={this.state.email}
+								placeholder="Enter email">
+							</input>
+							<input
+								onFocus={() => this.props.actions.shapeActions.setShapeDeletePermission(false)}
+								onBlur={() => this.props.actions.shapeActions.setShapeDeletePermission(true)}
+								onChange={(event) => this.onHandleChange(event)}
+								type="password"
+								value={this.state.password}
+								placeholder="Enter password">
+							</input>
+							<input
+								className="custom-submit"
+								type="submit">
+							</input>
 						</form>
-
 						<p className="api-status">{this.state.status}</p>
 					</div>
 				</div>
@@ -85,7 +102,8 @@ function mapDispatchToProps(dispatch) {
 	return {
 		actions: {
 			authActions: bindActionCreators(authActions, dispatch),
-			layoutActions: bindActionCreators(layoutActions, dispatch)
+			layoutActions: bindActionCreators(layoutActions, dispatch),
+			shapeActions: bindActionCreators(shapeActions, dispatch)
 		}
 	}
 }

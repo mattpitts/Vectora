@@ -56,7 +56,7 @@ class SignUp extends React.Component {
 
 				setTimeout(() => {
 					this.props.actions.layoutActions.hideModal();
-				}, 2000)
+				}, 1000)
 			}
 		).catch(
 			error => {
@@ -71,9 +71,26 @@ class SignUp extends React.Component {
 					<div className="login-container">
 						<h3>Sign Up</h3>
 						<form className="login-form">
-							<input onChange={(event) => this.onHandleChange(event)} type="text" value={this.state.username} placeholder="Enter username"></input>
-							<input onChange={(event) => this.onHandleChange(event)} type="email" value={this.state.email} placeholder="Enter email"></input>
-							<input onChange={(event) => this.onHandleChange(event)} type="password" value={this.state.password} placeholder="Enter password"></input>
+							<input
+								onFocus={() => this.props.actions.shapeActions.setShapeDeletePermission(false)}
+								onBlur={() => this.props.actions.shapeActions.setShapeDeletePermission(true)}
+								onChange={(event) => this.onHandleChange(event)}
+								type="text" value={this.state.username}
+								placeholder="Enter username">
+							</input>
+							<input
+								onFocus={() => this.props.actions.shapeActions.setShapeDeletePermission(false)}
+								onBlur={() => this.props.actions.shapeActions.setShapeDeletePermission(true)}
+								onChange={(event) => this.onHandleChange(event)}
+								type="email" value={this.state.email}
+								placeholder="Enter email">
+							</input>
+							<input
+								onFocus={() => this.props.actions.shapeActions.setShapeDeletePermission(false)}
+								onBlur={() => this.props.actions.shapeActions.setShapeDeletePermission(true)}
+								onChange={(event) => this.onHandleChange(event)}
+								type="password" value={this.state.password}
+								placeholder="Enter password"></input>
 						</form>
 						<div onClick={this.onSubmit} className='login-submit'>Submit</div>
 						<p className="api-status">{this.state.status}</p>
