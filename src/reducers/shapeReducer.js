@@ -47,11 +47,14 @@ export default function shapeReducer(state = initialState, action) {
 			if(!state.deletePermission) {
 				return state;
 			}
-			let selectedIndex
+			let selectedIndex = 'none'
 			for (let i = 0; i < state.shapes.length; i++) {
 				if(state.shapes[i].selected) {
 					selectedIndex = i;
 				}
+			}
+			if(selectedIndex === 'none') {
+				return {...state}
 			}
 			let before = state.shapes.slice(0, selectedIndex)
 			let after = state.shapes.slice(selectedIndex + 1, state.shapes.length)
