@@ -34,6 +34,15 @@ export function loadProject(project) {
 export function clearArtBoard() {
 	return { type: 'CLEAR_ARTBOARD' }
 }
+export function moveShapeForward(id) {
+	return { type: 'MOVE_SHAPE_FORWARD', id }
+}
+export function moveShapeBackward(id) {
+	return { type: 'MOVE_SHAPE_BACKWARD', id }
+}
+export function createTextField(payload) {
+	return { type: 'CREATE_TEXT_FIELD', payload }
+}
 // export function fetchProjectRequest() {
 // 	return { type: 'FETCH_PROJECT', status: 'fetching'}
 // }

@@ -412,3 +412,15 @@ body {
 	font-size: 1em;
 	padding: 2%;
 }
+.ShapeListHeader i {
+	margin-left: 3px;
+	color: #474747;
+	cursor: pointer;
+}
+.ShapeListHeader i:hover {
+	text-shadow: .5px .5px 1px grey;
+}
+.ShapeListHeader i:active {
+	text-shadow: none;
+	color: #575757;
+}

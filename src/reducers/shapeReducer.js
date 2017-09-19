@@ -70,6 +70,28 @@ export default function shapeReducer(state = initialState, action) {
 		case 'RESIZE_SHAPE':
 			state.shapes[action.payload.index] = action.payload.selectedShape
 			return {...state};
+		case 'MOVE_SHAPE_FORWARD':
+			if(action.id === state.shapes.length - 1) {
+				return {...state}
+			} else {
+				let selected = state.shapes.slice(action.id, action.id+1);
+				let displaced = state.shapes.slice(action.id+1,action.id+2);
+				let before = state.shapes.slice(0, action.id);
+				let after = state.shapes.slice(action.id+2, state.shapes.length + 1);
+				return {...state, shapes: [...before, ...displaced,...selected, ...after]}
+			}
+		case 'MOVE_SHAPE_BACKWARD':
+			if(action.id == 0) {
+				return {...state}
+			} else {
+				let selected = state.shapes.slice(action.id, action.id+1);
+				let displaced = state.shapes.slice(action.id-1,action.id);
+				let before = state.shapes.slice(0, action.id-1);
+				let after = state.shapes.slice(action.id+1, state.shapes.length + 1);
+				return {...state, shapes: [...before, ...selected, ...displaced, ...after]}
+			}
+		case 'CREATE_TEXT_FIELD':
+			return {...state, shapes: [...state.shapes, action.payload]}
 		case 'SET_PROJECT_ID':
 			return {...state, projectID: action.id, projectName: action.name }
 		case 'LOAD_PROJECT':

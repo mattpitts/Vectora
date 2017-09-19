@@ -1,13 +1,20 @@
-const initialVisibility = {
-	fill: 'open',
-	stroke: 'closed',
-	transform: 'closed'
+// const initialVisibility = {
+// 	fill: 'open',
+// 	stroke: 'closed',
+// 	transform: 'closed'
+// }
+const text = {
+	fontFamily: 'sans-serif',
+	fontSize: '1em',
+	fill: 'none',
+	stroke: 'black'
 }
 const initialProperties = {
 	fill: 'grey',
 	stroke: 'black',
 	strokeWidth: 5,
-	initialVisibility
+	// initialVisibility,
+	text
 }
 export default function propertiesReducer(state = initialProperties, action) {
 	switch(action.type) {

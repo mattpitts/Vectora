@@ -2,6 +2,7 @@ import React from 'react';
 import Circle from '../../Components/Shapes/Circle';
 import Path from '../../Components/Shapes/Path';
 import Rect from '../../Components/Shapes/Rect';
+import Text from '../../Components/Shapes/Text';
 
 export default function constructor(shape, i) {
 	switch(shape.type) {
@@ -45,6 +46,21 @@ export default function constructor(shape, i) {
 					strokeWidth={shape.strokeWidth}
 					translate={shape.translate}
 					scale={shape.scale}
+				/>
+			)
+		case 'text':
+			return (
+				<Text
+					id={i.toString}
+					key={i}
+					x={shape.x}
+					y={shape.y}
+					content={shape.content}
+					fontFamily={shape.font}
+					fontSize={shape.fontSize}
+					fill={shape.fill}
+					stroke={shape.stroke}
+					selected={shape.selected}
 				/>
 			)
 		default:

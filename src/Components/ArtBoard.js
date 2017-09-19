@@ -6,7 +6,9 @@ import { bindActionCreators } from 'redux';
 import Circle from './Shapes/Circle';
 import Rect from './Shapes/Rect';
 import Path from './Shapes/Path';
+import Text from './Shapes/Text';
 import LogIn from './LogIn';
+
 import KeyboardControls from './KeyboardControls';
 import * as shapeActions from '../actions/shapeActions';
 import * as dragActions from '../actions/dragActions';
@@ -31,24 +33,30 @@ class ArtBoard extends React.Component {
 
 
 	onClick(event) {
-		if(!event.target.id) {
+		if(this.props.tool === 'text') {
+			let newText = shapeUtilities.text.create({x: event.clientX, y: event.clientY}, this.props.properties.text);
+			this.props.actions.shapeActions.createTextField(newText);
+		}
+		else if(!event.target.id) {
 			return;
 		}
-		if(event.target.id === "ArtBoard" && !this.state.nodeDrag) {
+		else if(event.target.id === "ArtBoard" && !this.state.nodeDrag && this.props.tool !== 'text') {
 			this.props.actions.shapeActions.unselectShapes();
-		} else if(!this.state.nodeDrag){
+		} else if(!this.state.nodeDrag) {
 			this.props.actions.shapeActions.unselectShapes();
 			this.props.actions.shapeActions.selectShape(event.target.id);
 		}
 	}
 
 	onMouseDown(event) {
+		//if a bounding box drag node has been selected
 		if(isNaN(event.target.id) && event.target.id !== 'ArtBoard') {
 			this.setState({
 				mouseDown: true,
 				nodeDrag: event.target.id
 			})
 			this.forceUpdate();
+		//If a shape is being dragged around
 		} else if(!isNaN(event.target.id) && this.props.selected && shapeUtilities.getSelectedIndex(this.props.shapes) == event.target.id){
 			let initialBox = Object.assign({}, {...this.props.shapes[event.target.id].boundingBox})
 			this.setState({
@@ -95,7 +103,7 @@ class ArtBoard extends React.Component {
 			this.props.actions.shapeActions.resizeShape(selectedShape);
 			this.forceUpdate();
 		}
-		if(this.state.mouseDown && !this.state.nodeDrag && !this.state.draggingShape) {
+		if(this.state.mouseDown && !this.state.nodeDrag && !this.state.draggingShape && this.props.tool !== 'text') {
 			if(!this.props.drag.dragging) {
 				this.props.actions.dragActions.beginDrag(
 					utilities.getDragArea(event.clientX, event.clientY)
@@ -146,7 +154,6 @@ class ArtBoard extends React.Component {
 	}
 
 	render() {
-		let globalTranslate = `translate(-${window.innerWidth * 0.1})`
 		let newShape;
 		let dragBox;
 		let selectedShape;
@@ -159,7 +166,7 @@ class ArtBoard extends React.Component {
 		let shapes = this.props.shapes.map((shape, i) => {
 			if(!shape.selected) {
 				return shapeUtilities.constructor(shape, i);
-			} else {
+			} else if(shape.type !== 'text'){
 				selectedShape = shapeUtilities.selectedConstructor(shape, i);
 				return;
 			}

@@ -6,8 +6,10 @@ import * as shapeActions from '../actions/shapeActions';
 
 class ShapeList extends React.Component {
 	render() {
+		let selected = 'none';
 		let shapes = this.props.shapes.shapes.map((shape, i) => {
 			if(shape.selected) {
+				selected = i;
 				return <p
 						key={i}
 						className={'ShapeListSelected'}
@@ -24,10 +26,28 @@ class ShapeList extends React.Component {
 						</p>
 			}
 		});
+		let icons;
+
+		if(this.props.shapes.shapes) {
+			icons = (
+				<div>
+					<i
+						onClick={() => this.props.actions.moveShapeForward(selected)}
+						className="fa fa-arrow-down">
+					</i>
+					<i
+						onClick={() => this.props.actions.moveShapeBackward(selected)}
+						className="fa fa-arrow-up"></i>
+
+				</div>
+			)
+		}
 		return (
 			<div className={'ShapeListContainer'}>
-				<div className={'PropertyHeader'}>
+				<div className={'PropertyHeader ShapeListHeader'}>
 					<h4>Layers</h4>
+						{icons}
+
 				</div>
 				<div className={'ShapeList'}>
 
@@ -49,6 +69,8 @@ function convertShapeName(type) {
 			return 'Path';
 		case 'circle':
 			return 'Circle';
+		case 'text':
+			return 'Text';
 		default:
 			return;
 	}
