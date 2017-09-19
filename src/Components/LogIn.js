@@ -6,8 +6,8 @@ import axios from 'axios';
 import * as authActions from '../actions/authActions';
 import * as layoutActions from '../actions/layoutActions';
 
-// const API_URL = window.location.href === 'http://localhost:3001' ? 'http://localhost:3000/api/v1' : 'tbd';
-const API_URL = 'http://localhost:3000/api/v1'
+const API_URL = window.location.href === 'http://localhost:3001/' ? 'http://localhost:3000/api/v1' : 'https://vectorasvg.herokuapp.com/api/v1';
+
 class LogIn extends React.Component {
 	constructor(props) {
 		super(props);
