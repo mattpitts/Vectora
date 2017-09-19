@@ -64,7 +64,7 @@ class ProjectMenu extends React.Component {
 							onClick={this.props.actions.shapeActions.clearArtBoard}>New</div>
 		let exportOption = <div
 							className='saveOptions'
-							onClick={this.props.actions.shapeActions.clearArtBoard}>Export</div>
+							onClick={this.props.actions.layoutActions.showCodeModal}>Export</div>
 		return (
 			<div className="ProjectMenuContainer">
 				<div className='PropertyHeader'>

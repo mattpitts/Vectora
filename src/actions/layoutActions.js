@@ -13,3 +13,6 @@ export function showUserProjectsModal() {
 export function showSaveNewProjectModal() {
 	return { type: 'SHOW_SAVE_NEW_PROJECT_MODAL' }
 }
+export function showCodeModal() {
+	return { type: 'SHOW_CODE_MODAL' }
+}

@@ -10,6 +10,8 @@ export default function layoutReducer(state = { modal: 'none' }, action) {
 			return {...state, modal: 'projects'}
 		case 'SHOW_SAVE_NEW_PROJECT_MODAL':
 			return {...state, modal: 'newProject'}
+		case 'SHOW_CODE_MODAL':
+			return {...state, modal: 'code'}
 		default:
 			return state;
 	}

@@ -9,6 +9,7 @@ import LogIn from './LogIn';
 import SignUp from './SignUp';
 import UserProjects from './UserProjects';
 import NewProject from './NewProject';
+import CodeModal from './CodeModal';
 
 import * as layoutActions from '../actions/layoutActions';
 
@@ -31,6 +32,7 @@ class Layout extends React.Component {
 				{this.props.layout.modal === 'signup' && <SignUp/>}
 				{this.props.layout.modal === 'projects' && <UserProjects/>}
 				{this.props.layout.modal === 'newProject' && <NewProject/>}
+				{this.props.layout.modal === 'code' && <CodeModal/>}
 				{this.props.layout.modal !== 'none' &&
 					<div
 						className='modal-hide-clicker'

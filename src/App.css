@@ -392,3 +392,22 @@ body {
 .custom-submit:active {
 	box-shadow: none;
 }
+.CodeModal {
+	position: fixed;
+	top: 10vh;
+	left: 15vw;
+	width: 70vw;
+	height: 80vh;
+	background-color: #dddddd;
+	box-shadow: 3px 3px 10px grey;
+	z-index: 1001;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+.codeTextarea {
+	width: 90%;
+	height: 90%;
+	font-size: 1em;
+}
