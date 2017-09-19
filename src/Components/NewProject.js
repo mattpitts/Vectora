@@ -5,7 +5,7 @@ import axios from 'axios';
 import * as layoutActions from '../actions/layoutActions';
 import * as shapeActions from '../actions/shapeActions';
 
-const API_URL = 'http://localhost:3000/api/v1'
+const API_URL = window.location.href === 'http://localhost:3001/' ? 'http://localhost:3000/api/v1' : 'https://vectorasvg.herokuapp.com/api/v1';
 
 class NewProject extends React.Component {
 	constructor(props) {
