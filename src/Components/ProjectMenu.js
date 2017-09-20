@@ -74,7 +74,7 @@ class ProjectMenu extends React.Component {
 				<div className="saveOptions">
 					<div
 						onClick={this.props.actions.layoutActions.showUserProjectsModal}
-						className='save-as'>Load</div>
+						className='save-as'>Projects</div>
 				</div>
 
 			if(this.props.shapes.projectID) {

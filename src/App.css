@@ -270,7 +270,7 @@ body {
 	background-color: white;
 	box-shadow: .1px .1px .1px grey;
 	width: 29%;
-	height: 30%;
+	height: 34%;
 	margin: 1%;
 	display: flex;
 	flex-direction: column;
@@ -294,6 +294,7 @@ body {
 	width: 48%;
 	text-align: center;
 	box-shadow: .1px .1px .1px #222222;
+	cursor: pointer;
 }
 .project-card-action-button:hover {
 	box-shadow: 1px 1px 1px #222222;
@@ -310,6 +311,7 @@ body {
 	width: 48%;
 	text-align: center;
 	box-shadow: .1px .1px .1px #222222;
+	cursor: pointer;
 }
 .project-card-action-button-delete:hover {
 	box-shadow: 1px 1px 1px #222222;
@@ -470,4 +472,5 @@ body {
 }
 .svg-thumbnail {
 	width: 100%;
+	box-shadow: .1px .1px .1px grey;
 }
