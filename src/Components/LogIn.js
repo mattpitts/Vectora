@@ -49,11 +49,13 @@ class LogIn extends React.Component {
 
 				setTimeout(() => {
 					this.props.actions.layoutActions.hideModal();
-				}, 2000)
+				}, 800)
 			}
 		).catch(
 			error => {
-				console.log('error');
+				this.setState({
+					status: 'Something went wrong'
+				})
 
 			}
 		)
