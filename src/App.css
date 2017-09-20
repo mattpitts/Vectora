@@ -456,6 +456,7 @@ body {
 	margin-left: 3px;
 	color: #474747;
 	cursor: pointer;
+	font-size: .9em;
 }
 .ShapeListHeader i:hover {
 	text-shadow: .5px .5px 1px grey;
@@ -463,4 +464,10 @@ body {
 .ShapeListHeader i:active {
 	text-shadow: none;
 	color: #575757;
+}
+.svg-thumbnail-container {
+	width: 100%;
+}
+.svg-thumbnail {
+	width: 100%;
 }

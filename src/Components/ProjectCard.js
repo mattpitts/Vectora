@@ -1,12 +1,13 @@
 import React from 'react';
+import ProjectCardThumbnail from './ProjectCardThumbnail';
 
 const ProjectCard = (props) => {
 	return (
 		<div className="project-card">
 			<h4 className='project-name'>{props.name}</h4>
-				<img
-					className='project-card-thumbnail'
-					src="https://placeholdit.co//i/200x170?&bg=bcbcbc"/>
+				<ProjectCardThumbnail
+					shapes={props.shapes}
+				/>
 			<div
 				className="project-card-options">
 				<p
@@ -24,5 +25,8 @@ const ProjectCard = (props) => {
 	)
 }
 
+	// <img
+	// 	className='project-card-thumbnail'
+	// 	src="https://placeholdit.co//i/200x170?&bg=bcbcbc"/>
 
 export default ProjectCard

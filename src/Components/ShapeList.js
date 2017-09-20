@@ -28,7 +28,7 @@ class ShapeList extends React.Component {
 		});
 		let icons;
 
-		if(this.props.shapes.shapes) {
+		if(this.props.shapes.shapes.length > 1) {
 			icons = (
 				<div>
 					<i

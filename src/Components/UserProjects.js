@@ -69,6 +69,7 @@ class UserProjects extends React.Component {
 				return (
 						<ProjectCard
 							name={project.name}
+							shapes={project.shapes}
 							id={i}
 							key={i}
 							onProjectClick={this.onProjectClick}
