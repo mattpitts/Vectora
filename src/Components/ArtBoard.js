@@ -6,7 +6,7 @@ import { bindActionCreators } from 'redux';
 import Circle from './Shapes/Circle';
 import Rect from './Shapes/Rect';
 import Path from './Shapes/Path';
-import Text from './Shapes/Text';
+import Ellipse from './Shapes/Ellipse';
 import LogIn from './LogIn';
 
 import KeyboardControls from './KeyboardControls';

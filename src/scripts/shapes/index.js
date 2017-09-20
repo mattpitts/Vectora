@@ -1,7 +1,7 @@
 import path from './path';
 import rect from './rect';
 import circle from './circle';
-import text from './text';
+import ellipse from './ellipse';
 import constructor from './constructor';
 import selectedConstructor from './selectedConstructor';
 import dragBox from './dragBox';
@@ -15,7 +15,7 @@ const shapeUtilities = {
 	path,
 	rect,
 	circle,
-	text,
+	ellipse,
 	constructor,
 	selectedConstructor,
 	dragBox,

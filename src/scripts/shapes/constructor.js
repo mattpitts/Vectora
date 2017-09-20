@@ -2,6 +2,7 @@ import React from 'react';
 import Circle from '../../Components/Shapes/Circle';
 import Path from '../../Components/Shapes/Path';
 import Rect from '../../Components/Shapes/Rect';
+import Ellipse from '../../Components/Shapes/Ellipse';
 import Text from '../../Components/Shapes/Text';
 
 export default function constructor(shape, i) {
@@ -19,6 +20,20 @@ export default function constructor(shape, i) {
 					strokeWidth={shape.strokeWidth}
 				/>
 			)
+			case 'ellipse':
+				return (
+					<Ellipse
+						id={i.toString()}
+						key={i}
+						cx={shape.cx}
+						cy={shape.cy}
+						rx={shape.rx}
+						ry={shape.ry}
+						fill={shape.fill}
+						stroke={shape.stroke}
+						strokeWidth={shape.strokeWidth}
+					/>
+				)
 		case 'rect':
 			return (
 				<Rect

@@ -4,11 +4,13 @@ import * as toolbarActions from '../actions/toolbarActions';
 const tools = [
 	'path',
 	'circle',
+	'ellipse',
 	'rect'
 ]
 const toolNames = [
 	'Draw',
 	'Circle',
+	'Ellipse',
 	'Rectangle'
 ]
 class ToolBar extends React.Component {

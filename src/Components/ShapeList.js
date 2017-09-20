@@ -71,6 +71,8 @@ function convertShapeName(type) {
 			return 'Circle';
 		case 'text':
 			return 'Text';
+		case 'ellipse':
+			return 'Ellipse';
 		default:
 			return;
 	}
