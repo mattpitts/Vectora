@@ -4,8 +4,42 @@ import { bindActionCreators } from 'redux';
 import * as shapeActions from '../actions/shapeActions';
 import * as layoutActions from '../actions/layoutActions';
 import * as authActions from '../actions/authActions';
+import axios from 'axios';
+
+const API_URL = window.location.href === 'http://localhost:3001/' ? 'http://localhost:3000/api/v1' : 'https://vectorasvg.herokuapp.com/api/v1';
+
 
 class ProjectMenu extends React.Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			status: 'Save'
+		}
+		this.handleSave = this.handleSave.bind(this);
+	}
+	handleSave() {
+		this.setState({
+			status: 'Saving...'
+		})
+		let project = {
+			userID: localStorage.userID,
+			shapes: this.props.shapes.shapes
+		}
+		axios.put(`${API_URL}/projects/${this.props.shapes.projectID}`, project)
+			.then(response => {
+				this.setState({
+					status: 'Saved'
+				});
+				setTimeout(() => {
+					this.setState({
+						status: 'Save'
+					})
+					}, 3000)
+
+			}).catch(err => {
+				console.log(err);
+			})
+	}
 	render() {
 		let userInfo;
 		if(this.props.auth.username) {
@@ -47,8 +81,8 @@ class ProjectMenu extends React.Component {
 				saveOptions =
 					<div className="saveOptions">
 						<div
-							onClick={this.props.actions.layoutActions.showUserProjectsModal}
-							className='save-as'>Save</div>
+							onClick={() => this.handleSave()}
+							className='save-as'>{this.state.status}</div>
 					</div>
 			} else {
 				saveOptions =

@@ -40,12 +40,27 @@ class UserProjects extends React.Component {
 	componentWillUnmount() {
 		this.props.actions.shapeActions.setShapeDeletePermission(true);
 	}
-	onProjectClick(index) {
-		console.log(this.state.projects[index]);
-		setTimeout(() => {
-			this.props.actions.shapeActions.loadProject(this.state.projects[index])
-			this.props.actions.layoutActions.hideModal()
-		}, 800);
+	onProjectClick(index, action) {
+		if(action === 'load') {
+			setTimeout(() => {
+				this.props.actions.shapeActions.loadProject(this.state.projects[index])
+				this.props.actions.layoutActions.hideModal()
+			}, 300);
+		} else if(action === 'delete') {
+			console.log('del');
+			let projectID = this.state.projects[index]._id;
+			axios.delete(`${API_URL}/projects/${projectID}`)
+				.then(response => {
+					console.log(response);
+					let projects = [
+						...this.state.projects.slice(0, index),
+						...this.state.projects.slice(index+1, this.state.projects.length)
+					]
+					this.setState({
+						projects
+					})
+				});
+		}
 	}
 	render() {
 		let projects;
