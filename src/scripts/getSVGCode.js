@@ -24,6 +24,16 @@ export default function getSVGCode(shapes) {
 				+ '/>';
 				code += shapeString;
 				break;
+				case 'ellipse':
+					shapeString = ' <ellipse'
+					+ ` cx="${shape.cx}"`
+					+ ` cy="${shape.cy}"`
+					+ ` rx="${shape.rx}"`
+					+ ` ry="${shape.ry}"`;
+					shapeString = concatCommonProps(shape, shapeString)
+					+ '/>';
+					code += shapeString;
+					break;
 			case 'path':
 				shapeString = ' <path'
 				+ ` d=${shape.d}`

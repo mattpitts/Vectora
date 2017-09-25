@@ -20,20 +20,20 @@ export default function constructor(shape, i) {
 					strokeWidth={shape.strokeWidth}
 				/>
 			)
-			case 'ellipse':
-				return (
-					<Ellipse
-						id={i.toString()}
-						key={i}
-						cx={shape.cx}
-						cy={shape.cy}
-						rx={shape.rx}
-						ry={shape.ry}
-						fill={shape.fill}
-						stroke={shape.stroke}
-						strokeWidth={shape.strokeWidth}
-					/>
-				)
+		case 'ellipse':
+			return (
+				<Ellipse
+					id={i.toString()}
+					key={i}
+					cx={shape.cx}
+					cy={shape.cy}
+					rx={shape.rx}
+					ry={shape.ry}
+					fill={shape.fill}
+					stroke={shape.stroke}
+					strokeWidth={shape.strokeWidth}
+				/>
+			)
 		case 'rect':
 			return (
 				<Rect
