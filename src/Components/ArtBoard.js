@@ -34,7 +34,12 @@ class ArtBoard extends React.Component {
 
 	onClick(event) {
 		if(this.props.tool === 'text') {
-			let newText = shapeUtilities.text.create({x: event.clientX, y: event.clientY}, this.props.properties.text);
+			let newText = shapeUtilities.text.create(
+				{
+					x: event.clientX,
+					y: event.clientY
+				},
+				this.props.properties.text);
 			this.props.actions.shapeActions.createTextField(newText);
 		}
 		else if(!event.target.id) {
@@ -57,7 +62,9 @@ class ArtBoard extends React.Component {
 			})
 			this.forceUpdate();
 		//If a shape is being dragged around
-		} else if(!isNaN(event.target.id) && this.props.selected && shapeUtilities.getSelectedIndex(this.props.shapes) == event.target.id){
+		} else if(!isNaN(event.target.id)
+		&& this.props.selected
+		&& shapeUtilities.getSelectedIndex(this.props.shapes) == event.target.id){
 			let initialBox = Object.assign({}, {...this.props.shapes[event.target.id].boundingBox})
 			this.setState({
 				...this.state,
@@ -98,7 +105,13 @@ class ArtBoard extends React.Component {
 	onMouseMove(event) {
 		if(this.state.draggingShape) {
 			let selectedShape = shapeUtilities.getSelectedShape(this.props.shapes);
-			selectedShape = shapeUtilities.moveShapeBoundingBox(selectedShape, event.clientX, event.clientY, this.state.draggingShape.initialCoords, this.state.draggingShape.initialBox)
+			selectedShape = shapeUtilities.moveShapeBoundingBox(
+				selectedShape,
+				event.clientX,
+				event.clientY,
+				this.state.draggingShape.initialCoords,
+				this.state.draggingShape.initialBox
+			)
 			shapeUtilities.matchShapeToBoundingBox(selectedShape);
 			this.props.actions.shapeActions.resizeShape(selectedShape);
 			this.forceUpdate();
