@@ -25,8 +25,11 @@ class ProjectMenu extends React.Component {
 			userID: localStorage.userID,
 			shapes: this.props.shapes.shapes
 		}
-		axios.put(`${API_URL}/projects/${this.props.shapes.projectID}`, project)
-			.then(response => {
+		axios.put(`${API_URL}/${localStorage.userID}/projects/${this.props.shapes.projectID}`, project, {
+			headers: {
+				'Authorization': `Bearer ${localStorage.userID}`
+				}
+			}).then(response => {
 				this.setState({
 					status: 'Saved'
 				});
@@ -34,8 +37,7 @@ class ProjectMenu extends React.Component {
 					this.setState({
 						status: 'Save'
 					})
-					}, 3000)
-
+				}, 3000)
 			}).catch(err => {
 				console.log(err);
 			})

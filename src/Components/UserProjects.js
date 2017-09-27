@@ -29,12 +29,17 @@ class UserProjects extends React.Component {
 
 	componentDidMount() {
 		this.props.actions.shapeActions.setShapeDeletePermission(false);
-		axios.get(`${API_URL}/${localStorage.userID}/projects`)
-			.then(response => {
+		axios.get(`${API_URL}/${localStorage.userID}/projects`, {
+			headers: {
+				'Authorization': `Bearer ${localStorage.token}`
+				}
+			}).then(response => {
 				this.setState({
 					...this.state,
 					projects: response.data
 				});
+			}).catch(err => {
+				console.log(err);
 			})
 	}
 	componentWillUnmount() {
@@ -47,11 +52,12 @@ class UserProjects extends React.Component {
 				this.props.actions.layoutActions.hideModal()
 			}, 300);
 		} else if(action === 'delete') {
-			console.log('del');
 			let projectID = this.state.projects[index]._id;
-			axios.delete(`${API_URL}/projects/${projectID}`)
-				.then(response => {
-					console.log(response);
+			axios.delete(`${API_URL}/${localStorage.userID}/projects/${projectID}`, {
+				headers: {
+					'Authorization': `Bearer ${localStorage.token}`
+				}
+			}).then(response => {
 					let projects = [
 						...this.state.projects.slice(0, index),
 						...this.state.projects.slice(index+1, this.state.projects.length)

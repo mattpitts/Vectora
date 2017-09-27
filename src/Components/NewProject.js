@@ -39,13 +39,15 @@ class NewProject extends React.Component {
 			userID: localStorage.userID,
 			shapes: this.props.shapes.shapes
 		}
-		axios.post(`${API_URL}/projects`, project)
-			.then(response => {
+		axios.post(`${API_URL}/${localStorage.userID}/projects`, project, {
+			headers: {
+				'Authorization': `Bearer ${localStorage.token}`
+			}
+		}).then(response => {
 				this.setState({
 					...this.state,
 					status: response.data.message
 				})
-				console.log(response);
 				this.props.actions.shapeActions.setProjectId(response.data._id, response.data.name)
 				setTimeout(() => {
 					this.props.actions.layoutActions.hideModal();
